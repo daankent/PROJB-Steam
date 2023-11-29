@@ -13,8 +13,13 @@ def getPlayerInfo(ids):
                 list - Lijst met de info van de ingevoerde steamIds alleen als er info bij dat id gevonden is
     """
     # als ids niet leeg is ids naar json omzetten, anders een http error geven
+    print(ids)
     if ids:
-        steamIds = json.loads(ids)
+
+        if not isinstance(ids, list):
+            steamIds = json.loads(ids)
+        else:
+            steamIds = ids
     else:
         raise HTTPException(status_code=500,
                             detail="Voeg ids toe aan je aanvraag")
@@ -28,8 +33,8 @@ def getPlayerInfo(ids):
                             detail="Voeg ids toe aan je aanvraag")
 
     # https://stackoverflow.com/questions/13252333/check-if-all-elements-of-a-list-are-of-the-same-type
-    # checken of de inhoud van steamIds wel allemaal int's zijn
-    if all(isinstance(x, int) for x in steamIds):
+    # checken of de inhoud van steamIds wel allemaal int's of strings zijn
+    if all(isinstance(x, (int, str)) for x in steamIds):
         try:
             playerInfoData = requests.get(
                 f"http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={constants.STEAM_API_KEY}&steamids={steamIds}")
