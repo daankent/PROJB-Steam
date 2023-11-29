@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 import getPlayerInfo
-import json
 
 app = FastAPI()
 
@@ -12,5 +11,5 @@ def get_slash():
 
 @app.get("/playerInfo/")
 def playerInfo(ids):
-    data = getPlayerInfo.getPlayerInfo(json.loads(ids))
+    data = getPlayerInfo.getPlayerInfo(ids)
     return data
