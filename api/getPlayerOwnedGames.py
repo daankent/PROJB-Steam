@@ -20,6 +20,3 @@ def getPlaterOwnedGames(steamId):
     except:
         print("Error")
         raise HTTPException(status_code=500, detail="Er ging iets fout bij het ophalen van de playerOwnedGames")
-
-
-print(getPlaterOwnedGames(76561199118065040))
