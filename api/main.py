@@ -19,7 +19,7 @@ def playerInfo(ids):
 
 @app.get("/playerOwnedGames/")
 def playerOwnedGames(id):
-    data = getPlayerOwnedGames.getPlaterOwnedGames(id)
+    data = getPlayerOwnedGames.getPlayerOwnedGames(id)
     return data
 
 
