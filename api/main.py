@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 import getPlayerInfo
 import getPlayerOwnedGames
+import getPlayerFriendList
 
 app = FastAPI()
 
@@ -19,4 +20,10 @@ def playerInfo(ids):
 @app.get("/playerOwnedGames/")
 def playerOwnedGames(id):
     data = getPlayerOwnedGames.getPlaterOwnedGames(id)
+    return data
+
+
+@app.get("/playerFriends/")
+def playerFriends(id):
+    data = getPlayerFriendList.getPlayerFriendList(id)
     return data
