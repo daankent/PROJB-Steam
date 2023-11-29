@@ -11,9 +11,6 @@ def getPlayerInfo(ids):
             ids:   Een lijst met steamIds waarvan de informatie moet worden opgevraagd.
         Returns:
                 list - Lijst met de info van de ingevoerde steamIds alleen als er info bij dat id gevonden is
-                -1 -  als niet alle steamIds een int zijn
-                -2 - geen ids ingevoerd
-
     """
     # als ids niet leeg is ids naar json omzetten, anders een http error geven
     if ids:
