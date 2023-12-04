@@ -2,6 +2,7 @@ from fastapi import FastAPI
 import getPlayerInfo
 import getPlayerOwnedGames
 import getPlayerFriendList
+import getPlayerLastPlayed
 
 app = FastAPI()
 
@@ -26,4 +27,16 @@ def playerOwnedGames(id):
 @app.get("/playerFriends/")
 def playerFriends(id):
     data = getPlayerFriendList.getPlayerFriendList(id)
+    return data
+
+
+@app.get("/playerLastPlayedGames/")
+def playerLastPlayedGames(id):
+    data = getPlayerLastPlayed.getPlayerLastPlayedGames(id)
+    return data
+
+
+@app.get("/playerLastPlayedGame/")
+def playerLastPlayedGames(id):
+    data = getPlayerLastPlayed.getPlayerLastPlayedGames(id)[0]
     return data
