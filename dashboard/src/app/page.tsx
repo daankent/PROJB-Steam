@@ -8,6 +8,7 @@ import Tile from "@/components/tile";
 import { FaChevronRight } from "react-icons/fa6";
 import FriendList from "@/components/home/friendList";
 import LoggedFrame from "@/components/loggedIn";
+import GameList from "@/components/home/gameList";
 export default function Home() {
   return (
     <div>
@@ -21,7 +22,7 @@ export default function Home() {
                   <h1 className="text-donkerzwartblauw font-bold text-xl italic">
                     Jouw Games
                   </h1>
-                  <div className="">Games</div>
+                  <GameList />
                 </div>
               </Tile>
             </div>
@@ -37,7 +38,7 @@ export default function Home() {
                     <FriendList />
 
                     <div className="flex items-center hover:text-blauwgrijs flex-row justify-end italic">
-                      <Link href="/">
+                      <Link href="/friends">
                         <h2 className="text-donkerzwartblauw font-bold hover:text-blauwgrijs">
                           Alle vrienden
                         </h2>
