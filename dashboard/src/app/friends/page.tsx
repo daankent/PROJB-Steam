@@ -34,7 +34,7 @@ export default async function FriendsPage() {
           <h1 className="text-lichtgrijs  font-bold text-2xl italic mb-2">
             Jouw Vrienden ({friends.length})
           </h1>
-          <div className="grid grid-cols-3 gap-5">
+          <div className="grid grid-cols md:grid-cols-2 lg:grid-cols-3 gap-5">
             {friends.map((friend: any) => {
               return (
                 <SubTile>
