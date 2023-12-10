@@ -16,7 +16,7 @@ def getPlayerOwnedGames(steamId):
     """
     try:
         playerOwnedGamesData = requests.get(
-            f"https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key={constants.STEAM_API_KEY}&steamid={steamId}")
+            f"https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key={constants.STEAM_API_KEY}&steamid={steamId}&include_appinfo=true&include_played_free_games=true")
         playerOwnedGames = playerOwnedGamesData.json()
         return playerOwnedGames
     except:
