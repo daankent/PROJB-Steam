@@ -23,14 +23,14 @@ export default async function GameList() {
   const games = data;
   let i = 0;
   return (
-    <div className="grid grid-cols-3 gap-2 mt-4">
-      {games.response.games.map((game: any) => {
-        if (game.playtime_forever <= 0) return;
-        i++;
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+        {games.response.games.map((game: any) => {
+          if (game.playtime_forever <= 0) return;
+          i++;
 
-        if (i > 9) return;
-        return (
-          <div className="col-span-1 w-full ">
+          if (i > 9) return;
+          return (
             <SubTile key={game.appid}>
               <div className="flex flex-row items-center">
                 <img
@@ -51,9 +51,10 @@ export default async function GameList() {
                 </Link>
               </div>
             </SubTile>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
+
       <div className="flex flex-row justify-end col-span-3 italic">
         <Link
           href="/games"
@@ -63,6 +64,6 @@ export default async function GameList() {
           <FaChevronRight />
         </Link>
       </div>
-    </div>
+    </>
   );
 }

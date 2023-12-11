@@ -34,11 +34,11 @@ export default async function GamesPage() {
           <h1 className="text-lichtgrijs  font-bold text-2xl italic mb-2">
             Jouw Games ({games.length})
           </h1>
-          <div className="grid grid-cols md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {games.map((game: any) => {
               //   if (!(game.playtime_forever > 0)) return;
               return (
-                <SubTile>
+                <SubTile key={game.appid}>
                   <div className="flex flex-row items-center">
                     <img
                       className="rounded-md mr-4"
