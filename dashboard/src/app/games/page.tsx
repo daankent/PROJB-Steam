@@ -38,7 +38,7 @@ export default async function GamesPage() {
             {games.map((game: any) => {
               //   if (!(game.playtime_forever > 0)) return;
               return (
-                <SubTile>
+                <SubTile key={game.appid}>
                   <div className="flex flex-row items-center">
                     <img
                       className="rounded-md mr-4"
