@@ -4,67 +4,44 @@ import { cookies } from "next/headers";
 import Navbar from "@/components/navbar";
 import Section from "@/components/section";
 import SubTile from "@/components/subtile";
-import Tile from "@/components/tile";
+import { revalidateTag } from "next/cache";
 
-import { FaChevronRight, FaSteam } from "react-icons/fa6";
-import FriendList from "@/components/home/friendList";
 import LoggedFrame from "@/components/loggedIn";
-import GameList from "@/components/home/gameList";
-async function getData() {
+import GameList from "@/components/games/gameList";
+async function getData(sort = "x") {
+  "use server";
   const steamId = cookies().get("steamid")?.value;
+
   const res = await fetch(
-    `http://localhost:8000/playerOwnedGames/?id=${steamId}`,
+    `http://localhost:8000/playerOwnedGames/${sort}?id=${steamId}`,
     {
-      next: { revalidate: 600 },
+      next: { revalidate: 600, tags: ["ownedGames"] },
+      // cache: "no-cache",
     }
   );
   if (!res.ok) {
-    throw new Error("Fout bij het ophalen van de games");
+    // throw new Error("Fout bij het ophalen van de games");
+    return [];
   }
   return res.json();
 }
+
+async function sort(sort: any) {
+  "use server";
+  // revalidateTag("ownedGames");
+  const data = await getData(sort);
+  console.log("SSSSS", data);
+  return data;
+}
 export default async function GamesPage() {
   const data = await getData();
-  const games = data?.response?.games;
+  const games = data;
   return (
     <div>
       <LoggedFrame>
         <Navbar />
         <Section>
-          <h1 className="text-lichtgrijs  font-bold text-2xl italic mb-2">
-            Jouw Games ({games.length})
-          </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {games.map((game: any) => {
-              //   if (!(game.playtime_forever > 0)) return;
-              return (
-                <SubTile key={game.appid}>
-                  <div className="flex flex-row items-center">
-                    <img
-                      className="rounded-md mr-4"
-                      src={`https://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`}
-                      alt=""
-                    />
-                    <h2 className="italic font-bold font-xl text-donkerblauw flex-1 w-[100%] h-[100%] text-clip text-lg">
-                      {game.name}
-                    </h2>
-
-                    <Link
-                      href={`https://store.steampowered.com/app/${game.appid}/`}
-                      target="_blank"
-                    >
-                      <div className="bg-transparent p-2 rounded-md text-donkerblauw hover:text-blauw text-xl">
-                        <FaSteam />
-                      </div>
-                    </Link>
-                  </div>
-                  <h3 className="text-donkerblauw p-2 font-semibold ">
-                    {game.playtime_forever} minuten gespeeld sinds aankoop
-                  </h3>
-                </SubTile>
-              );
-            })}
-          </div>
+          <GameList sort={sort} data={games} />
         </Section>
       </LoggedFrame>
     </div>
