@@ -41,7 +41,7 @@ export default async function GamesPage() {
       <LoggedFrame>
         <Navbar />
         <Section>
-          <GameList sort={sort} data={games} />
+          <GameList title="Jouw Games" sort={sort} data={games} />
         </Section>
       </LoggedFrame>
     </div>

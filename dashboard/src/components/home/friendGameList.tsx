@@ -3,11 +3,11 @@ import { cookies } from "next/headers";
 
 import SubTile from "@/components/subtile";
 
-import { FaChevronRight, FaSteam } from "react-icons/fa6";
+import { FaSteam } from "react-icons/fa6";
 async function getData() {
   const steamId = cookies().get("steamid")?.value;
   const res = await fetch(
-    `http://localhost:8000/playerOwnedGames/playtime-desc?id=${steamId}`,
+    `http://localhost:8000/playerFriendsOwnedGames/az?id=${steamId}`,
     {
       next: { revalidate: 600 },
     }
@@ -18,12 +18,14 @@ async function getData() {
   return res.json();
 }
 
-export default async function GameList() {
+export default async function FriendGameList() {
   const data = await getData();
   const games = data;
   let i = 0;
   return (
     <>
+      <h1>Aantal: {games.length}</h1>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
         {games.length > 0 ? (
           games.map((game: any) => {
@@ -64,15 +66,15 @@ export default async function GameList() {
         )}
       </div>
 
-      <div className="flex flex-row justify-end col-span-3 italic">
+      {/* <div className="flex flex-row justify-end col-span-3 italic">
         <Link
-          href="/games"
+          href="/friendsGames"
           className="text-donkerzwartblauw font-bold hover:text-blauwgrijs flex flex-row items-center"
         >
           Alle games
           <FaChevronRight />
         </Link>
-      </div>
+      </div> */}
     </>
   );
 }

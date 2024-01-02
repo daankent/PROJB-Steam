@@ -19,20 +19,25 @@ import LoggedFrame from "@/components/loggedIn";
 import GameList from "@/components/games/gameList";
 import { useEffect, useState } from "react";
 
-export default function GamesPage({ sort }: any) {
+export default function GamesPage({ sort, title }: any) {
   const [games, setGames] = useState<any>();
   const [sortType, setSort] = useState<string>("x");
+  const [loading, setLoading] = useState<boolean>(false);
+
   const [hideNoPlaytime, setHideNoPlaytime] = useState<boolean>(false);
   useEffect(() => {
+    setLoading(true);
     const res = sort(sortType).then((games: any) => {
       console.log(games);
       setGames(games);
+      setLoading(false);
     });
   }, [sortType]);
   return (
     <div>
       <h1 className="text-lichtgrijs  font-bold text-2xl italic mb-2">
-        Jouw Games ({games?.length})
+        {loading && <h1>Laden....</h1>}
+        {title} ({games?.length})
       </h1>
       <div className=" flex flex-col md:flex-row mb-4 p-2 justify-center md:items-center gap-2">
         <h2 className="text-lichtgrijs italic font-bold">Filters: </h2>
