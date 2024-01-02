@@ -7,6 +7,7 @@ import Tile from "@/components/tile";
 
 import { FaChevronRight } from "react-icons/fa6";
 import FriendList from "@/components/home/friendList";
+import FriendGameList from "@/components/home/friendGameList";
 import LoggedFrame from "@/components/loggedIn";
 import GameList from "@/components/home/gameList";
 export default function Home() {
@@ -46,6 +47,17 @@ export default function Home() {
                       <FaChevronRight />
                     </div>
                   </div>
+                </div>
+              </Tile>
+            </div>
+
+            <div className="col-span-1 lg:col-span-5">
+              <Tile>
+                <div className="flex flex-col">
+                  <h1 className="text-donkerzwartblauw font-bold text-xl italic">
+                    Games van Vrienden
+                  </h1>
+                  <FriendGameList />
                 </div>
               </Tile>
             </div>
