@@ -35,7 +35,7 @@ def playerInfo(ids):
 
 @app.get("/playerOwnedGames/{sort}")
 def playerOwnedGames(id, sort):
-    cache_key = f'{sort}-{id}'
+    cache_key = f'playerOwnedGames-{sort}-{id}'
     print(cache_key)
     if cache_key in cache:
         print("CACHEEEEEE")
@@ -76,3 +76,34 @@ def playerLastPlayedGames(id):
 def playerLastPlayedGames(id):
     data = getPlayerLastPlayed.getPlayerLastPlayedGames(id)[0]
     return data
+
+@app.get("/playerFriendsOwnedGames/{sort}")
+def platerFriendsOwnedGames(id, sort):
+  
+    cache_key_sort = f'playerFriendsGames-{sort}-{id}'
+    if cache_key_sort in cache:
+        return cache[cache_key_sort]
+    friends = getPlayerFriendList.getPlayerFriendList(id)
+    games = []
+    for friend in friends:
+        cache_key = f'playerGames-{id}'
+        if cache_key in cache:
+            games.extend(cache[cache_key])
+        else:
+            data = getPlayerOwnedGames.getPlayerOwnedGames(friend["steamid"])
+            games.extend(data["response"]["games"])
+    
+    if sort == "az":
+        cache[cache_key_sort] = sortOwnedGames.asc(games, "name")
+        return cache[cache_key_sort] 
+    elif sort == "za":
+        cache[cache_key_sort] = sortOwnedGames.desc(games, "name")
+        return cache[cache_key_sort] 
+    else:
+        cache[cache_key] = data
+        return games
+
+
+@app.get("/cache")
+def getCache():
+    return cache
