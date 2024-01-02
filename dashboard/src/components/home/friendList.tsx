@@ -47,7 +47,7 @@ export default async function FriendList() {
                   {vriend.personaname}{" "}
                   {vriend?.realname && `(${vriend.realname})`}
                 </h2>
-                <Link href="/">
+                <Link href={`/player/${vriend.steamid}`}>
                   <div className="bg-blauwgrijs p-2 rounded-md text-lichtgrijs hover:bg-donkerblauw">
                     <FaChevronRight />
                   </div>
