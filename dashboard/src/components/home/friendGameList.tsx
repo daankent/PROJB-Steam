@@ -7,7 +7,7 @@ import { FaSteam } from "react-icons/fa6";
 async function getData() {
   const steamId = cookies().get("steamid")?.value;
   const res = await fetch(
-    `http://localhost:8000/playerFriendsOwnedGames/az?id=${steamId}`,
+    `http://localhost:8000/playerFriendsOwnedGames/playtime-desc?id=${steamId}`,
     {
       next: { revalidate: 600 },
     }
@@ -24,7 +24,12 @@ export default async function FriendGameList() {
   let i = 0;
   return (
     <>
-      <h1>Aantal: {games.length}</h1>
+      <div className="flex flex-row mb-2">
+        <h1>Aantal: {games.length}</h1>
+        <h2 className="italic ml-4">
+          Gesorteerd op speeltijd van hoog naar laag
+        </h2>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
         {games.length > 0 ? (

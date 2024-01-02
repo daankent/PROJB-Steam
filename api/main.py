@@ -99,6 +99,12 @@ def platerFriendsOwnedGames(id, sort):
     elif sort == "za":
         cache[cache_key_sort] = sortOwnedGames.desc(games, "name")
         return cache[cache_key_sort] 
+    elif sort == "playtime-asc":
+        cache[cache_key_sort] = sortOwnedGames.asc(games, "playtime_forever")
+        return cache[cache_key_sort] 
+    elif sort == "playtime-desc":
+        cache[cache_key_sort] = sortOwnedGames.desc(games, "playtime_forever")
+        return cache[cache_key_sort] 
     else:
         cache[cache_key] = data
         return games
