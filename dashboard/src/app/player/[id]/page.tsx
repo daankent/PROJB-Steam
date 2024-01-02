@@ -70,10 +70,23 @@ export default async function PlayerPage({ params }: any) {
             </Link>
           </div>
         </Section>
-
+        <Section>
+          <div className="flex flex-row items-center justify-center">
+            <Link href="#games">
+              <p className="font-bold text-lichtgrijs mr-4 hover:text-donkerblauw">
+                Games
+              </p>
+            </Link>
+            <Link href="#friends">
+              <p className="font-bold text-lichtgrijs mr-4 hover:text-donkerblauw">
+                Vrienden
+              </p>
+            </Link>
+          </div>
+        </Section>
         {player.communityvisibilitystate == "3" ? (
           <Section>
-            <div className="max-w-[1200px] m-auto">
+            <div id="games" className="max-w-[1200px] m-auto">
               <h1 className="text-lichtgrijs  font-bold text-2xl italic mb-2">
                 Games ({player.games.length})
               </h1>
@@ -134,7 +147,7 @@ export default async function PlayerPage({ params }: any) {
 
         {player.communityvisibilitystate == "3" && (
           <Section>
-            <div className="max-w-[1200px] m-auto">
+            <div id="friends" className="max-w-[1200px] m-auto">
               <h1 className="text-lichtgrijs  font-bold text-2xl italic mb-2">
                 Vrienden ({player.friends.length})
               </h1>
