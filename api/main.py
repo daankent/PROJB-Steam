@@ -4,6 +4,7 @@ import getPlayerOwnedGames
 import getPlayerFriendList
 import getPlayerLastPlayed
 import sortOwnedGames
+import getPlayerLevel
 from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 origins = [
@@ -32,13 +33,16 @@ def playerInfo(ids):
     data = getPlayerInfo.getPlayerInfo(ids)
     return data
 
+
 @app.get("/playerInfoExtended/")
 def playerInfoExtended(id):
     data = getPlayerInfo.getPlayerInfo([id])
+    data[0]["level"] = getPlayerLevel.getPlayerLevel(id)
+    
     data[0]["lastPlayed"] = getPlayerLastPlayed.getPlayerLastPlayedGames(id)[0]
     games = getPlayerOwnedGames.getPlayerOwnedGames(id)
     data[0]["games"] = sortOwnedGames.desc(games["response"]["games"], "playtime_forever")
-    friends= getPlayerFriendList.getPlayerFriendList(id)
+    friends = getPlayerFriendList.getPlayerFriendList(id)
     data[0]["friends"] = friends
     
     return data
