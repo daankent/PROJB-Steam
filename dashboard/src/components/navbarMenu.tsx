@@ -29,8 +29,13 @@ export default function NavbarMenu({ user }: any) {
         <div className=" w-full flex flex-row-reverse z-10 p-4 rounded-md absolute mt-8">
           <div className="bg-lichtgrijs w-full md:w-[25%] lg:w-[15%]  rounded-md p-4 flex flex-row-reverse">
             <div className="flex flex-col">
+              <Link href={`/player/${user.steamid}`}>
+                <p className=" font-bold cursor-pointer mb-2 hover:text-blauw">
+                  Profiel
+                </p>
+              </Link>
               <Link href="/uitloggen">
-                <p className="text-red-900 font-bold cursor-pointer">
+                <p className="text-red-900 font-bold cursor-pointer hover:text-red-700">
                   Uitloggen
                 </p>
               </Link>
