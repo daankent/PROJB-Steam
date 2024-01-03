@@ -13,7 +13,7 @@ import GameList from "@/components/home/gameList";
 async function getData() {
   const steamId = cookies().get("steamid")?.value;
   const res = await fetch(
-    `http://localhost:8000/playerFriends/?id=${steamId}`,
+    `http://localhost:8000/playerFriendsExtended/?id=${steamId}`,
     {
       next: { revalidate: 600 },
     }
@@ -46,11 +46,14 @@ export default async function FriendsPage() {
                         src={friend.avatar}
                         alt=""
                       />
-                      <h2 className="italic font-bold font-xl text-donkerblauw flex-1 w-[100%] h-[100%] text-clip text-lg">
-                        {friend.personaname}
-                      </h2>
+                      <div className="flex flex-col flex-1">
+                        <h2 className="italic font-bold font-xl text-donkerblauw flex-1 w-[100%] h-[100%] text-clip text-lg">
+                          {friend.personaname}
+                        </h2>
+                        <h3>Laatst gespeeld: {friend.lastPlayed.name}</h3>
+                      </div>
 
-                      <Link href={friend.profileurl} target="_blank">
+                      <Link href={`/player/${friend.steamid}`} target="_blank">
                         <div className="bg-transparent p-2 rounded-md text-donkerblauw hover:text-blauw text-xl">
                           <FaSteam />
                         </div>

@@ -70,6 +70,7 @@ export default async function FriendGameList() {
           </SubTile>
         )}
       </div>
+      <p>Ga naar het profiel van een vriend om alle games in te zien.</p>
 
       {/* <div className="flex flex-row justify-end col-span-3 italic">
         <Link

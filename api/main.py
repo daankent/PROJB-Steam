@@ -32,6 +32,16 @@ def playerInfo(ids):
     data = getPlayerInfo.getPlayerInfo(ids)
     return data
 
+@app.get("/playerInfoExtended/")
+def playerInfoExtended(id):
+    data = getPlayerInfo.getPlayerInfo([id])
+    data[0]["lastPlayed"] = getPlayerLastPlayed.getPlayerLastPlayedGames(id)[0]
+    games = getPlayerOwnedGames.getPlayerOwnedGames(id)
+    data[0]["games"] = sortOwnedGames.desc(games["response"]["games"], "playtime_forever")
+    friends= getPlayerFriendList.getPlayerFriendList(id)
+    data[0]["friends"] = friends
+    
+    return data
 
 @app.get("/playerOwnedGames/{sort}")
 def playerOwnedGames(id, sort):
@@ -65,6 +75,19 @@ def playerFriends(id):
     data = getPlayerFriendList.getPlayerFriendList(id)
     return data
 
+@app.get("/playerFriendsExtended")
+def playerFriends(id):
+    data = getPlayerFriendList.getPlayerFriendList(id)
+    
+    for index, friend in enumerate(data):
+        cache_key = f"playerFriends-lastgame-{friend['steamid']}"
+        if cache_key in cache:
+            data[index]["lastPlayed"] = cache[cache_key]
+        else:
+            lastGame = getPlayerLastPlayed.getPlayerLastPlayedGames(friend["steamid"])[0]
+            cache[cache_key] = lastGame
+            data[index]["lastPlayed"] = lastGame
+    return data
 
 @app.get("/playerLastPlayedGames/")
 def playerLastPlayedGames(id):
@@ -108,6 +131,7 @@ def platerFriendsOwnedGames(id, sort):
     else:
         cache[cache_key] = data
         return games
+
 
 
 @app.get("/cache")
