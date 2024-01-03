@@ -6,11 +6,11 @@ import json
 
 def getPlayerLevel(steamId):
     """
-        Functie om de laatst gespeelde games van een speler op te halen op basis van zijn/haar id
+        Functie om het level van een speler op te halen
         Args:
-            steamId:   steamId van de gebruiker waarvan je de laatst gespeelde games van wil ophalen
+            steamId:   steamId van de gebruiker waarvan je het level wil ophalen
         Returns:
-                list - lijst met de laatste gespeelde games gesorteerd op basis van meeste naar minste aantal gespeelde minuten
+                level - level van de speler
     """
     try:
         playerLevelData = requests.get(
@@ -20,4 +20,4 @@ def getPlayerLevel(steamId):
         return playerLevel
     except:
         print("Error")
-        raise HTTPException(status_code=500, detail="Er ging iets fout bij het ophalen van de playerLevel")
+        raise HTTPException(status_code=500, detail="Er ging iets fout bij het ophalen van het playerLevel")
