@@ -37,7 +37,7 @@ def playerInfoExtended(id):
     data = getPlayerInfo.getPlayerInfo([id])
     data[0]["lastPlayed"] = getPlayerLastPlayed.getPlayerLastPlayedGames(id)[0]
     games = getPlayerOwnedGames.getPlayerOwnedGames(id)
-    data[0]["games"] = games["response"]["games"]
+    data[0]["games"] = sortOwnedGames.desc(games["response"]["games"], "playtime_forever")
     friends= getPlayerFriendList.getPlayerFriendList(id)
     data[0]["friends"] = friends
     
