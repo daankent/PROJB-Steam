@@ -54,7 +54,8 @@ export default async function PlayerPage({ params }: any) {
               />
               <div className="flex flex-col">
                 <h1 className="text-lichtgrijs text-3xl font-bold ">
-                  {player.personaname}
+                  {player.personaname}{" "}
+                  <span className="italic text-lg">(level {player.level})</span>
                 </h1>
                 {player.realname && (
                   <h2 className="italic  text-lichtgrijs">{player.realname}</h2>
