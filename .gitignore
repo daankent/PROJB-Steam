@@ -7,3 +7,6 @@ api/__pycache__/getPlayerLastPlayed.cpython-311.pyc
 api/__pycache__/getPlayerOwnedGames.cpython-311.pyc
 api/__pycache__/main.cpython-311.pyc
 api/__pycache__/sortOwnedGames.cpython-311.pyc
+api/__pycache__/getAppInfoFromSteam.cpython-311.pyc
+api/__pycache__/getGameFromJson.cpython-311.pyc
+api/__pycache__/getPlayerLevel.cpython-311.pyc
