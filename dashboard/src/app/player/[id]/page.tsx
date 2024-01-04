@@ -5,7 +5,7 @@ import Navbar from "@/components/navbar";
 import Section from "@/components/section";
 import SubTile from "@/components/subtile";
 import Tile from "@/components/tile";
-
+import formatPlaytime from "@/functions/formatPlaytime";
 import {
   FaChevronRight,
   FaSteam,
@@ -29,6 +29,14 @@ async function getData(id: any) {
 export default async function PlayerPage({ params }: any) {
   const data = await getData(params.id);
   const player = data[0];
+
+  function calculatePlaytime() {
+    let totaal = 0;
+    player.games.map((game: any) => {
+      totaal += game.playtime_forever;
+    });
+    return totaal;
+  }
   if (!player)
     return (
       <LoggedFrame>
@@ -54,7 +62,8 @@ export default async function PlayerPage({ params }: any) {
               />
               <div className="flex flex-col">
                 <h1 className="text-lichtgrijs text-3xl font-bold ">
-                  {player.personaname}
+                  {player.personaname}{" "}
+                  <span className="italic text-lg">(level {player.level})</span>
                 </h1>
                 {player.realname && (
                   <h2 className="italic  text-lichtgrijs">{player.realname}</h2>
@@ -90,6 +99,9 @@ export default async function PlayerPage({ params }: any) {
               <h1 className="text-lichtgrijs  font-bold text-2xl italic mb-2">
                 Games ({player.games.length})
               </h1>
+              <h2 className="text-lichtgrijs font-bold px-2 py-4">
+                Totale speeltijd: {formatPlaytime(calculatePlaytime())}
+              </h2>
               {player.games.length == 0 && (
                 <SubTile>
                   <div className="flex flex-row items-center">
@@ -107,7 +119,7 @@ export default async function PlayerPage({ params }: any) {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                 {player.games.map((game: any) => {
                   return (
-                    <SubTile>
+                    <SubTile key={game.appid}>
                       <div className="flex flex-row items-center">
                         <img
                           className="rounded-md mr-4"
@@ -118,17 +130,15 @@ export default async function PlayerPage({ params }: any) {
                           {game.name}
                         </h2>
 
-                        <Link
-                          href={`https://store.steampowered.com/app/${game.appid}/`}
-                          target="_blank"
-                        >
-                          <div className="bg-transparent p-2 rounded-md text-donkerblauw hover:text-blauw text-xl">
-                            <FaSteam />
+                        <Link href={`/game/${game.appid}`}>
+                          <div className="bg-blauwgrijs p-2 rounded-md text-lichtgrijs hover:bg-donkerblauw">
+                            <FaChevronRight />
                           </div>
                         </Link>
                       </div>
                       <h3 className="text-donkerblauw p-2 font-semibold ">
-                        {game.playtime_forever} minuten gespeeld sinds aankoop
+                        {formatPlaytime(game.playtime_forever)} gespeeld sinds
+                        aankoop
                       </h3>
                     </SubTile>
                   );
@@ -168,7 +178,7 @@ export default async function PlayerPage({ params }: any) {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                 {player.friends.map((friend: any) => {
                   return (
-                    <SubTile>
+                    <SubTile key={friend.personaname}>
                       <div className="flex flex-row items-center">
                         <img
                           className="rounded-md mr-4"

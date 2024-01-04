@@ -18,6 +18,7 @@ import {
 import LoggedFrame from "@/components/loggedIn";
 import GameList from "@/components/games/gameList";
 import { useEffect, useState } from "react";
+import formatPlaytime from "@/functions/formatPlaytime";
 
 export default function GamesPage({ sort, title }: any) {
   const [games, setGames] = useState<any>();
@@ -156,7 +157,7 @@ export default function GamesPage({ sort, title }: any) {
                   </Link>
                 </div>
                 <h3 className="text-donkerblauw p-2 font-semibold ">
-                  {game.playtime_forever} minuten gespeeld sinds aankoop
+                  {formatPlaytime(game.playtime_forever)} gespeeld sinds aankoop
                 </h3>
               </SubTile>
             );
