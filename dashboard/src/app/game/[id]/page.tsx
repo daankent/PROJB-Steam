@@ -131,7 +131,8 @@ export default async function GamePage({ params }: any) {
                 )}
               </div>
 
-              <h2 className="font-bold text-lichtgrijs">€{game.prijs}</h2>
+              {/* TODO: prijs converten naar euro */}
+              {/* <h2 className="font-bold text-lichtgrijs">€{game.prijs}</h2> */}
               <h1 className="font-bold text-lichtgrijs mt-4 text-xl">
                 Categorieën
               </h1>
