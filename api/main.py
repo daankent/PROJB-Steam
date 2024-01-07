@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 import getPlayerInfo
 import getPlayerOwnedGames
 import getPlayerFriendList
@@ -7,8 +8,8 @@ import sortOwnedGames
 import getGameFromJson
 import getPlayerLevel
 import getAppInfoFromSteam
-from fastapi.middleware.cors import CORSMiddleware
-
+import createSpeelmoment
+import createSpeelmomentUitnodiging as csu
 app = FastAPI()
 origins = [
 
@@ -189,6 +190,20 @@ def platerFriendsOwnedGames(id, sort):
         cache[cache_key] = data
         return games
 
+@app.post("/speelmoment")
+async def createspeelmoment(request: Request):
+    data = await request.json()
+    return createSpeelmoment.create(data["creator"], data["private"],data["datum"], data["tijd"], data["game_name"], data["game_id"])
+
+@app.post("/uitnodiging")
+async def createuitnodiging(request: Request):
+    data = await request.json()
+    return csu.create(data["speelmoment"], data["player"])
+
+@app.post("/uitnodiging-answer")
+async def answeruitnodiging(request: Request):
+    data = await request.json()
+    return csu.answer(data["uitnodiging"], data["answer"])
 
 @app.get("/cache")
 def getCache():
