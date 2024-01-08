@@ -12,6 +12,7 @@ import {
   FaLock,
   FaTriangleExclamation,
 } from "react-icons/fa6";
+import calculateAccountAge from "@/functions/calculateAccountAge";
 import LoggedFrame from "@/components/loggedIn";
 async function getData(id: any) {
   const res = await fetch(
@@ -68,6 +69,13 @@ export default async function PlayerPage({ params }: any) {
                 {player.realname && (
                   <h2 className="italic  text-lichtgrijs">{player.realname}</h2>
                 )}
+                <h3 className="text-lichtgrijs font-semibold">
+                  Account aangemaakt op:{" "}
+                  {calculateAccountAge(
+                    player.timecreated
+                  ).accountCreationDate.toLocaleDateString()}{" "}
+                  ({calculateAccountAge(player.timecreated).diff} dagen geleden)
+                </h3>
               </div>
             </div>
             <Link
