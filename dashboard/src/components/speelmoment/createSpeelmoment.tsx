@@ -3,7 +3,12 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaBan, FaChevronRight, FaPlus, FaSteam } from "react-icons/fa6";
 
-export default function CreateSpeelmomentForm({ game, id, creator }: any) {
+export default function CreateSpeelmomentForm({
+  game,
+  id,
+  creator,
+  creator_name,
+}: any) {
   const [datum, setDatum] = useState<any>(null);
   const [startTijd, setStartTijd] = useState<any>(null);
   const [eindTijd, setEindTijd] = useState<any>(null);
@@ -15,7 +20,7 @@ export default function CreateSpeelmomentForm({ game, id, creator }: any) {
         setError("Starttijd ligt na eindtijd");
       } else {
         const res = await fetch(
-          `http://localhost:8000/createSpeelmoment/?creator=${creator}&game_id=${id}&game_name=${game.name}&datum=${datum}&starttijd=${startTijd}&eindtijd=${eindTijd}`
+          `http://localhost:8000/createSpeelmoment/?creator=${creator}&game_id=${id}&game_name=${game.name}&datum=${datum}&starttijd=${startTijd}&eindtijd=${eindTijd}&creator_name=${creator_name}`
         );
         if (res.ok) {
           setError("Succes");

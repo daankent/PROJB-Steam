@@ -192,12 +192,12 @@ def platerFriendsOwnedGames(id, sort):
         return games
 
 @app.get("/createSpeelmoment")
-async def createspeelmoment(creator,datum,starttijd, eindtijd, game_name, game_id):
-    return createSpeelmoment.create(creator, True,datum, starttijd, eindtijd, game_name, game_id)
+async def createspeelmoment(creator,datum,starttijd, eindtijd, game_name, game_id, creator_name):
+    return createSpeelmoment.create(creator, True,datum, starttijd, eindtijd, game_name, game_id, creator_name)
 
 @app.get("/uitnodiging")
-async def createuitnodiging(speelmoment, player):
-    return csu.create(speelmoment,player)
+async def createuitnodiging(speelmoment, player, player_name):
+    return csu.create(speelmoment,player,player_name)
 
 @app.get("/uitnodiging-answer")
 async def answeruitnodiging(id, answer):

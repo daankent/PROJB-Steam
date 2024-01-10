@@ -26,7 +26,10 @@ async function getData(appid: any) {
 }
 export default async function CreateSpeelmomentPage({ params }: any) {
   const steamId = cookies().get("steamid")?.value;
-
+  const userCookie: any = cookies().get("steamuser")?.value || {
+    personaname: "unknow user",
+  };
+  const user = JSON.parse(userCookie);
   if (!params.id) {
     return "Geen id aanwezig";
   }
@@ -40,7 +43,12 @@ export default async function CreateSpeelmomentPage({ params }: any) {
           <h1 className="text-lichtgrijs  font-bold text-2xl  mb-8">
             Speelmoment aanmaken
           </h1>
-          <CreateSpeelmomentForm game={game} id={params.id} creator={steamId} />
+          <CreateSpeelmomentForm
+            game={game}
+            id={params.id}
+            creator={steamId}
+            creator_name={user.personaname}
+          />
         </Section>
       </LoggedFrame>
     </div>

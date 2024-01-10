@@ -92,8 +92,9 @@ export default async function SpeelmomentInfo({ params }: any) {
             <UitnodigingWidget id={checkU(steamId, m.uitnodigingen).id} />
           )}
           <div className="flex flex-col items-center mt-4">
-            <h2 className="text-lichtgrijs  font-bold text-3xl  mb-2">Game:</h2>
-
+            <h2 className="text-lichtgrijs  font-bold text-3xl  mb-2">
+              {m.speelmoment.creator_name} heeft jou uitgenodigd voor:
+            </h2>
             <img
               className="rounded-xl mr-4 w-[50%] shadow-xl"
               src={`https://cdn.akamai.steamstatic.com/steam/apps/${m.speelmoment.game_id}/header.jpg`}
@@ -101,6 +102,15 @@ export default async function SpeelmomentInfo({ params }: any) {
             />
             <h3 className="text-lichtgrijs  font-bold text-xl  mt-2 mb-2">
               {m.speelmoment.game_name}
+            </h3>
+            <h3 className="text-lichtgrijs  font-bold text-xl  mt-2 mb-2">
+              {m.speelmoment.datum}
+            </h3>
+            <h3 className="text-lichtgrijs  font-bold text-xl  mt-2 mb-2">
+              {m.speelmoment.starttijd.split(":")[0]}:
+              {m.speelmoment.starttijd.split(":")[1]}-
+              {m.speelmoment.eindtijd.split(":")[0]}:
+              {m.speelmoment.eindtijd.split(":")[1]}
             </h3>
           </div>
           <div className="max-w-[500px] m-auto flex flex-col justify-center text-center mt-8 gap-2">
@@ -111,7 +121,7 @@ export default async function SpeelmomentInfo({ params }: any) {
               return (
                 <Tile key={u.player}>
                   <div className="flex flex-row items-center">
-                    <h1 className="flex-1 text-left">{u.player}</h1>
+                    <h1 className="flex-1 text-left">{u.player_name}</h1>
                     {u.accepted && (
                       <div className="bg-green-500 py-2 px-4 rounded-full bg-opacity-50">
                         Geaccepteerd

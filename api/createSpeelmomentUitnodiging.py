@@ -1,6 +1,6 @@
 import psycopg2
 from fastapi import HTTPException
-def create(speelmoment, player):
+def create(speelmoment, player, name):
     try:
         connection = psycopg2.connect(
             dbname="steamhub",
@@ -12,7 +12,7 @@ def create(speelmoment, player):
         
         cursor = connection.cursor()
         
-        cursor.execute('INSERT INTO uitnodiging (speelmoment, player) values (%s, %s) returning id', (speelmoment, player))
+        cursor.execute('INSERT INTO uitnodiging (speelmoment, player, player_name) values (%s, %s,%s) returning id', (speelmoment, player, name))
         id = cursor.fetchone()[0]
         connection.commit()
         connection.close()

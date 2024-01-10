@@ -20,9 +20,9 @@ export default function VriendenUitnodigWidget({
     uitgenodigden.push(i.player);
   });
 
-  async function invite(id: any) {
+  async function invite(id: any, name: any) {
     const res = await fetch(
-      `http://localhost:8000/uitnodiging?player=${id}&speelmoment=${speelmoment}`
+      `http://localhost:8000/uitnodiging?player=${id}&speelmoment=${speelmoment}&player_name=${name}`
     );
     router.refresh();
   }
@@ -50,7 +50,7 @@ export default function VriendenUitnodigWidget({
                 </div>
                 <div
                   onClick={() => {
-                    invite(friend.steamid);
+                    invite(friend.steamid, friend.personaname);
                   }}
                   className="bg-blauwgrijs cursor-pointer p-2 rounded-md text-lichtgrijs hover:bg-donkerblauw"
                 >
