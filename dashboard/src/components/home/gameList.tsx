@@ -42,12 +42,9 @@ export default async function GameList() {
                   <h2 className="italic font-bold font-xl text-donkerblauw flex-1 w-[100%] h-[100%] text-clip">
                     {game.name}
                   </h2>
-                  <Link
-                    href={`https://store.steampowered.com/app/${game.appid}/`}
-                    target="_blank"
-                  >
-                    <div className="text-blauwgrijs p-2 rounded-md  hover:text-donkerblauw">
-                      <FaSteam />
+                  <Link href={`/game/${game.appid}`}>
+                    <div className="bg-blauwgrijs p-2 rounded-md text-lichtgrijs hover:bg-donkerblauw">
+                      <FaChevronRight />
                     </div>
                   </Link>
                 </div>

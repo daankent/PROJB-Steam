@@ -5,7 +5,7 @@ import Section from "@/components/section";
 import SubTile from "@/components/subtile";
 import Tile from "@/components/tile";
 
-import { FaChevronRight } from "react-icons/fa6";
+import { FaChevronRight, FaEnvelope } from "react-icons/fa6";
 import FriendList from "@/components/home/friendList";
 import FriendGameList from "@/components/home/friendGameList";
 import LoggedFrame from "@/components/loggedIn";
@@ -26,6 +26,17 @@ export default function Home() {
                   <GameList />
                 </div>
               </Tile>
+
+              <div className="mt-8">
+                <Tile>
+                  <div className="flex flex-col">
+                    <h1 className="text-donkerzwartblauw font-bold text-xl italic">
+                      Games van Vrienden
+                    </h1>
+                    <FriendGameList />
+                  </div>
+                </Tile>
+              </div>
             </div>
 
             {/* sidebar */}
@@ -49,17 +60,33 @@ export default function Home() {
                   </div>
                 </div>
               </Tile>
-            </div>
 
-            <div className="col-span-1 lg:col-span-5">
-              <Tile>
-                <div className="flex flex-col">
-                  <h1 className="text-donkerzwartblauw font-bold text-xl italic">
-                    Games van Vrienden
-                  </h1>
-                  <FriendGameList />
-                </div>
-              </Tile>
+              <div className="mt-8">
+                <Tile>
+                  <div className="flex flex-col">
+                    <div className="flex flex-row items-center">
+                      <h1 className="text-donkerzwartblauw font-bold text-xl italic mb-2 flex-1">
+                        Speelmomenten
+                      </h1>
+                      {/* <h2 className="text-donkerzwartblauw flex flex-row items-center gap-2 text-xl font-semibold">
+                        <span className="text-purple-700">
+                          <FaEnvelope />
+                        </span>
+                        3
+                      </h2> */}
+                    </div>
+
+                    <div className="flex items-center hover:text-blauwgrijs flex-row justify-end italic">
+                      <Link href="/speelmoment">
+                        <h2 className="text-donkerzwartblauw font-bold hover:text-blauwgrijs">
+                          Alle speelmomenten
+                        </h2>
+                      </Link>
+                      <FaChevronRight />
+                    </div>
+                  </div>
+                </Tile>
+              </div>
             </div>
           </div>
         </Section>

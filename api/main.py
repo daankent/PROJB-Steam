@@ -10,6 +10,7 @@ import getPlayerLevel
 import getAppInfoFromSteam
 import createSpeelmoment
 import createSpeelmomentUitnodiging as csu
+import getSpeelmomenten
 app = FastAPI()
 origins = [
 
@@ -190,21 +191,28 @@ def platerFriendsOwnedGames(id, sort):
         cache[cache_key] = data
         return games
 
-@app.post("/speelmoment")
-async def createspeelmoment(request: Request):
-    data = await request.json()
-    return createSpeelmoment.create(data["creator"], data["private"],data["datum"], data["tijd"], data["game_name"], data["game_id"])
+@app.get("/createSpeelmoment")
+async def createspeelmoment(creator,datum,starttijd, eindtijd, game_name, game_id):
+    return createSpeelmoment.create(creator, True,datum, starttijd, eindtijd, game_name, game_id)
 
-@app.post("/uitnodiging")
-async def createuitnodiging(request: Request):
-    data = await request.json()
-    return csu.create(data["speelmoment"], data["player"])
+@app.get("/uitnodiging")
+async def createuitnodiging(speelmoment, player):
+    return csu.create(speelmoment,player)
 
-@app.post("/uitnodiging-answer")
-async def answeruitnodiging(request: Request):
-    data = await request.json()
-    return csu.answer(data["uitnodiging"], data["answer"])
+@app.get("/uitnodiging-answer")
+async def answeruitnodiging(id, answer):
+    return csu.answer(id, answer)
 
+@app.get("/speelmomenten")
+async def speelmomenten(id):
+    return {
+        "public": getSpeelmomenten.getPublicSpeelmomenten(),
+        "private": getSpeelmomenten.getPlayerSpeelmomenten(id)
+    }
+    
+@app.get("/speelmoment")
+async def speelmomenten(id):
+    return getSpeelmomenten.getSingle(id)
 @app.get("/cache")
 def getCache():
     return cache

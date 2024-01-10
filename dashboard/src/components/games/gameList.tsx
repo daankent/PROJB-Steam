@@ -14,6 +14,7 @@ import {
   FaArrowDown91,
   FaStopwatch,
   FaBan,
+  FaCalendarPlus,
 } from "react-icons/fa6";
 import LoggedFrame from "@/components/loggedIn";
 import GameList from "@/components/games/gameList";
@@ -147,14 +148,18 @@ export default function GamesPage({ sort, title }: any) {
                     {game.name}
                   </h2>
 
-                  <Link
-                    href={`https://store.steampowered.com/app/${game.appid}/`}
-                    target="_blank"
-                  >
-                    <div className="bg-transparent p-2 rounded-md text-donkerblauw hover:text-blauw text-xl">
-                      <FaSteam />
-                    </div>
-                  </Link>
+                  <div className="flex flex-row gap-2">
+                    <Link href={`/speelmoment/create/${game.appid}`}>
+                      <div className="bg-blauwgrijs p-2 rounded-md text-lichtgrijs hover:bg-donkerblauw">
+                        <FaCalendarPlus />
+                      </div>
+                    </Link>
+                    <Link href={`/game/${game.appid}`}>
+                      <div className="bg-blauwgrijs p-2 rounded-md text-lichtgrijs hover:bg-donkerblauw">
+                        <FaChevronRight />
+                      </div>
+                    </Link>
+                  </div>
                 </div>
                 <h3 className="text-donkerblauw p-2 font-semibold ">
                   {formatPlaytime(game.playtime_forever)} gespeeld sinds aankoop

@@ -22,7 +22,7 @@ def create(speelmoment, player):
         raise HTTPException(status_code=500, detail="Er ging iets fout bij het creëren van de uitnodiging")
 
 def answer(uitnodiging, answer):
-    try:
+    # try:
         connection = psycopg2.connect(
             dbname="steamhub",
             user="postgres",
@@ -31,14 +31,16 @@ def answer(uitnodiging, answer):
             port=5432
         )
         cursor = connection.cursor()
-        
-        cursor.execute('UPDATE uitnodiging set answered=True, accepted=%s where id=%s returning id', (answer, uitnodiging))
-        id = cursor.fetchone()[0]
-        
+        if answer == "true":
+            a = True
+        else: 
+            a = False
+        print(a, uitnodiging)
+        cursor.execute('UPDATE uitnodiging set answered=%s, accepted=%s where id=%s', (True, a, uitnodiging))
         connection.commit()
         connection.close()
-        return id
-    except:
-        print("Error")
-        raise HTTPException(status_code=500, detail="Er ging iets fout bij het beantwoorden van de uitnodiging")
+        return 1
+    # except:
+    #     print("Error")
+    #     raise HTTPException(status_code=500, detail="Er ging iets fout bij het beantwoorden van de uitnodiging")
     
