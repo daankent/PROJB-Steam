@@ -9,9 +9,12 @@ export default function formatPlaytime(minuten: number) {
   } else if (minuten < 20160) {
     const dagen = minuten / 1440;
     return `${dagen.toFixed(1)} dagen`;
-  } else {
+  } else if (minuten < 43200) {
     const weken = minuten / 20160;
     return `${weken.toFixed(1)} weken`;
+  } else {
+    const maanden = minuten / 43200;
+    return `${maanden.toFixed(1)} maanden`;
   }
   return formatted;
 }

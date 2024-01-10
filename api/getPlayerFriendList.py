@@ -28,5 +28,6 @@ def getPlayerFriendList(steamId):
         # lijst met alle vrienden en hun info teruggeven
         return friends
     except:
-
-        raise HTTPException(status_code=500, detail="Er ging iets fout bij het ophalen van de vriendenlijst")
+        
+        print("Er ging iets fout bij het ophalen van de vriendenlijs")
+        return []

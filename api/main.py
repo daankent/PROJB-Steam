@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 import getPlayerInfo
 import getPlayerOwnedGames
 import getPlayerFriendList
@@ -7,8 +8,9 @@ import sortOwnedGames
 import getGameFromJson
 import getPlayerLevel
 import getAppInfoFromSteam
-from fastapi.middleware.cors import CORSMiddleware
-
+import createSpeelmoment
+import createSpeelmomentUitnodiging as csu
+import getSpeelmomenten
 app = FastAPI()
 origins = [
 
@@ -189,7 +191,28 @@ def platerFriendsOwnedGames(id, sort):
         cache[cache_key] = data
         return games
 
+@app.get("/createSpeelmoment")
+async def createspeelmoment(creator,datum,starttijd, eindtijd, game_name, game_id, creator_name):
+    return createSpeelmoment.create(creator, True,datum, starttijd, eindtijd, game_name, game_id, creator_name)
 
+@app.get("/uitnodiging")
+async def createuitnodiging(speelmoment, player, player_name):
+    return csu.create(speelmoment,player,player_name)
+
+@app.get("/uitnodiging-answer")
+async def answeruitnodiging(id, answer):
+    return csu.answer(id, answer)
+
+@app.get("/speelmomenten")
+async def speelmomenten(id):
+    return {
+        "public": getSpeelmomenten.getPublicSpeelmomenten(),
+        "private": getSpeelmomenten.getPlayerSpeelmomenten(id)
+    }
+    
+@app.get("/speelmoment")
+async def speelmomenten(id):
+    return getSpeelmomenten.getSingle(id)
 @app.get("/cache")
 def getCache():
     return cache

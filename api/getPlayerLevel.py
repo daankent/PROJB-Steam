@@ -19,5 +19,5 @@ def getPlayerLevel(steamId):
         print(playerLevel)
         return playerLevel
     except:
-        print("Error")
-        raise HTTPException(status_code=500, detail="Er ging iets fout bij het ophalen van het playerLevel")
+        return "x"
+        # raise HTTPException(status_code=500, detail="Er ging iets fout bij het ophalen van het playerLevel")

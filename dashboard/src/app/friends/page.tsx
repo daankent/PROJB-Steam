@@ -27,6 +27,7 @@ async function getData() {
 export default async function FriendsPage() {
   const data = await getData();
   const friends = data;
+
   return (
     <div>
       <LoggedFrame>
@@ -53,9 +54,9 @@ export default async function FriendsPage() {
                         <h3>Laatst gespeeld: {friend.lastPlayed.name}</h3>
                       </div>
 
-                      <Link href={`/player/${friend.steamid}`} target="_blank">
-                        <div className="bg-transparent p-2 rounded-md text-donkerblauw hover:text-blauw text-xl">
-                          <FaSteam />
+                      <Link href={`/player/${friend.steamid}`}>
+                        <div className="bg-blauwgrijs p-2 rounded-md text-lichtgrijs hover:bg-donkerblauw">
+                          <FaChevronRight />
                         </div>
                       </Link>
                     </div>
