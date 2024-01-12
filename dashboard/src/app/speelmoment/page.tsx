@@ -55,7 +55,7 @@ export default async function SpeelmomentenPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                 {speelmomenten.private?.deelnames?.map((m: any) => {
                   return (
-                    <Tile>
+                    <Tile key={m.sid}>
                       <div className="flex flex-row items-center">
                         <div className="flex-1">
                           <h1 className="text-donkerblauw font-bold">
@@ -94,7 +94,7 @@ export default async function SpeelmomentenPage() {
               )}
               {speelmomenten.private.uitnodigingen.map((m: any) => {
                 return (
-                  <Tile>
+                  <Tile key={m.sid}>
                     <div className="flex flex-row items-center">
                       <div className="flex-1">
                         <h1 className="text-donkerblauw font-bold">
