@@ -21,14 +21,12 @@ import {
   FaA,
 } from "react-icons/fa6";
 import LoggedFrame from "@/components/loggedIn";
+import { API_URL } from "@/APIURL";
 async function getData() {
   const steamId = cookies().get("steamid")?.value;
-  const res = await fetch(
-    `http://localhost:8000/speelmomenten/?id=${steamId}`,
-    {
-      cache: "no-cache",
-    }
-  );
+  const res = await fetch(`${API_URL}/speelmomenten/?id=${steamId}`, {
+    cache: "no-cache",
+  });
   if (!res.ok) {
     // throw new Error("Fout bij het ophalen van de games");
     return [];

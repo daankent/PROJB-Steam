@@ -9,6 +9,7 @@ import {
   FaSteam,
 } from "react-icons/fa6";
 import Section from "../section";
+import { API_URL } from "@/APIURL";
 export default function VriendenUitnodigWidget({
   friends,
   u,
@@ -22,7 +23,7 @@ export default function VriendenUitnodigWidget({
 
   async function invite(id: any, name: any) {
     const res = await fetch(
-      `http://localhost:8000/uitnodiging?player=${id}&speelmoment=${speelmoment}&player_name=${name}`
+      `${API_URL}/uitnodiging?player=${id}&speelmoment=${speelmoment}&player_name=${name}`
     );
     router.refresh();
   }

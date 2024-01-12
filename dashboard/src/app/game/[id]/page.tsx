@@ -21,8 +21,9 @@ import {
   FaA,
 } from "react-icons/fa6";
 import LoggedFrame from "@/components/loggedIn";
+import { API_URL } from "@/APIURL";
 async function getData(id: any) {
-  const res = await fetch(`http://localhost:8000/gameInfoExtended/?id=${id}`, {
+  const res = await fetch(`${API_URL}/gameInfoExtended/?id=${id}`, {
     next: { revalidate: 600 },
   });
   if (!res.ok) {

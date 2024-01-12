@@ -10,14 +10,12 @@ import { FaChevronRight, FaSteam } from "react-icons/fa6";
 import FriendList from "@/components/home/friendList";
 import LoggedFrame from "@/components/loggedIn";
 import GameList from "@/components/home/gameList";
+import { API_URL } from "@/APIURL";
 async function getData() {
   const steamId = cookies().get("steamid")?.value;
-  const res = await fetch(
-    `http://localhost:8000/playerFriendsExtended/?id=${steamId}`,
-    {
-      next: { revalidate: 600 },
-    }
-  );
+  const res = await fetch(`${API_URL}/playerFriendsExtended/?id=${steamId}`, {
+    next: { revalidate: 600 },
+  });
   if (!res.ok) {
     // throw new Error("Fout bij het ophalen van de games");
     return [];

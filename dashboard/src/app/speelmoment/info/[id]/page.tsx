@@ -19,9 +19,10 @@ import GameList from "@/components/home/gameList";
 import CreateSpeelmomentForm from "@/components/speelmoment/createSpeelmoment";
 import UitnodigingWidget from "@/components/speelmoment/uitnodigingWidget";
 import { redirect } from "next/navigation";
+import { API_URL } from "@/APIURL";
 import VriendenUitnodigWidget from "@/components/speelmoment/vriendenUitnodigWidget";
 async function getData(id: any) {
-  const res = await fetch(`http://localhost:8000/speelmoment/?id=${id}`, {
+  const res = await fetch(`${API_URL}/speelmoment/?id=${id}`, {
     cache: "no-cache",
   });
   if (!res.ok) {
@@ -32,12 +33,9 @@ async function getData(id: any) {
 }
 
 async function getFriends(steamid: any) {
-  const res = await fetch(
-    `http://localhost:8000/playerFriendsExtended/?id=${steamid}`,
-    {
-      next: { revalidate: 300 },
-    }
-  );
+  const res = await fetch(`${API_URL}/playerFriendsExtended/?id=${steamid}`, {
+    next: { revalidate: 300 },
+  });
   if (!res.ok) {
     // throw new Error("Fout bij het ophalen van de games");
     return [];
