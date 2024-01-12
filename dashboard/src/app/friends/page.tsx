@@ -1,15 +1,10 @@
 import Link from "next/link";
 import { cookies } from "next/headers";
-
 import Navbar from "@/components/navbar";
 import Section from "@/components/section";
-import SubTile from "@/components/subtile";
 import Tile from "@/components/tile";
-
-import { FaChevronRight, FaSteam } from "react-icons/fa6";
-import FriendList from "@/components/home/friendList";
+import { FaChevronRight } from "react-icons/fa6";
 import LoggedFrame from "@/components/loggedIn";
-import GameList from "@/components/home/gameList";
 import { API_URL } from "@/APIURL";
 async function getData() {
   const steamId = cookies().get("steamid")?.value;
@@ -58,9 +53,6 @@ export default async function FriendsPage() {
                         </div>
                       </Link>
                     </div>
-                    {/* <h3 className="text-donkerblauw p-2 font-semibold ">
-                    {game.playtime_forever} minuten gespeeld sinds aankoop
-                  </h3> */}
                   </Tile>
                 );
               })

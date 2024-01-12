@@ -1,11 +1,6 @@
-import Link from "next/link";
 import { cookies } from "next/headers";
-
 import Navbar from "@/components/navbar";
 import Section from "@/components/section";
-import SubTile from "@/components/subtile";
-import { revalidateTag } from "next/cache";
-
 import LoggedFrame from "@/components/loggedIn";
 import GameList from "@/components/games/gameList";
 import { API_URL } from "@/APIURL";

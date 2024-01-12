@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { cookies } from "next/headers";
-
 import SubTile from "@/components/subtile";
 import { API_URL } from "@/APIURL";
-import { FaChevronRight, FaSteam } from "react-icons/fa6";
+import { FaChevronRight } from "react-icons/fa6";
 async function getData() {
   const steamId = cookies().get("steamid")?.value;
   const res = await fetch(

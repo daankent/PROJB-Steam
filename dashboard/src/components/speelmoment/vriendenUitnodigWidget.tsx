@@ -1,13 +1,7 @@
 "use client";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Tile from "../tile";
-import {
-  FaBan,
-  FaCheck,
-  FaChevronRight,
-  FaPlus,
-  FaSteam,
-} from "react-icons/fa6";
+
 import Section from "../section";
 import { API_URL } from "@/APIURL";
 export default function VriendenUitnodigWidget({

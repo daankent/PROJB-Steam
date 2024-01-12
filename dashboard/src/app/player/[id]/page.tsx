@@ -4,7 +4,6 @@ import { cookies } from "next/headers";
 import Navbar from "@/components/navbar";
 import Section from "@/components/section";
 import SubTile from "@/components/subtile";
-import Tile from "@/components/tile";
 import formatPlaytime from "@/functions/formatPlaytime";
 import {
   FaChevronRight,

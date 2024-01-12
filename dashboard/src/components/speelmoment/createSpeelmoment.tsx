@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { FaBan, FaChevronRight, FaPlus, FaSteam } from "react-icons/fa6";
+import { FaBan, FaPlus } from "react-icons/fa6";
 import { API_URL } from "@/APIURL";
 export default function CreateSpeelmomentForm({
   game,

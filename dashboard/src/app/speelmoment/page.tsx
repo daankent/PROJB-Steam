@@ -1,25 +1,9 @@
 import Link from "next/link";
 import { cookies } from "next/headers";
-
 import Navbar from "@/components/navbar";
 import Section from "@/components/section";
-import SubTile from "@/components/subtile";
 import Tile from "@/components/tile";
-import Chip from "@/components/chip";
-
-import {
-  FaChevronRight,
-  FaSteam,
-  FaLock,
-  FaTriangleExclamation,
-  FaWindows,
-  FaApple,
-  FaLinux,
-  FaThumbsDown,
-  FaThumbsUp,
-  FaPeopleGroup,
-  FaA,
-} from "react-icons/fa6";
+import { FaChevronRight } from "react-icons/fa6";
 import LoggedFrame from "@/components/loggedIn";
 import { API_URL } from "@/APIURL";
 async function getData() {
