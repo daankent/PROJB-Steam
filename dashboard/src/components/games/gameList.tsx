@@ -1,13 +1,8 @@
 "use client";
 import Link from "next/link";
-
-import Navbar from "@/components/navbar";
-import Section from "@/components/section";
 import SubTile from "@/components/subtile";
-
 import {
   FaChevronRight,
-  FaSteam,
   FaArrowDownAZ,
   FaArrowDownZA,
   FaArrowDown19,
@@ -16,8 +11,6 @@ import {
   FaBan,
   FaCalendarPlus,
 } from "react-icons/fa6";
-import LoggedFrame from "@/components/loggedIn";
-import GameList from "@/components/games/gameList";
 import { useEffect, useState } from "react";
 import formatPlaytime from "@/functions/formatPlaytime";
 

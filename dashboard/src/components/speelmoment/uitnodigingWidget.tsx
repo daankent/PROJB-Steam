@@ -1,19 +1,14 @@
 "use client";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Tile from "../tile";
-import {
-  FaBan,
-  FaCheck,
-  FaChevronRight,
-  FaPlus,
-  FaSteam,
-} from "react-icons/fa6";
+import { FaBan, FaCheck } from "react-icons/fa6";
+import { API_URL } from "@/APIURL";
 export default function UitnodigingWidget({ id }: any) {
   const router = useRouter();
   async function submit(antwoord: any) {
     console.log("vbo");
     const res = await fetch(
-      `http://localhost:8000/uitnodiging-answer?answer=${antwoord}&id=${id}`
+      `${API_URL}/uitnodiging-answer?answer=${antwoord}&id=${id}`
     );
     router.refresh();
   }

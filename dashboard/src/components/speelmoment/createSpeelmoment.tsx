@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { FaBan, FaChevronRight, FaPlus, FaSteam } from "react-icons/fa6";
-
+import { FaBan, FaPlus } from "react-icons/fa6";
+import { API_URL } from "@/APIURL";
 export default function CreateSpeelmomentForm({
   game,
   id,
@@ -20,7 +20,7 @@ export default function CreateSpeelmomentForm({
         setError("Starttijd ligt na eindtijd");
       } else {
         const res = await fetch(
-          `http://localhost:8000/createSpeelmoment/?creator=${creator}&game_id=${id}&game_name=${game.name}&datum=${datum}&starttijd=${startTijd}&eindtijd=${eindTijd}&creator_name=${creator_name}`
+          `${API_URL}/createSpeelmoment/?creator=${creator}&game_id=${id}&game_name=${game.name}&datum=${datum}&starttijd=${startTijd}&eindtijd=${eindTijd}&creator_name=${creator_name}`
         );
         if (res.ok) {
           setError("Succes");

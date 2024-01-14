@@ -1,7 +1,8 @@
 // Dit is de api route om een moderator in te loggen.
+import { API_URL } from "@/APIURL";
 import { cookies } from "next/headers";
 async function getData(id: any) {
-  const res = await fetch(`http://localhost:8000/playerInfo/?ids=[${id}]`, {
+  const res = await fetch(`${API_URL}/playerInfo/?ids=[${id}]`, {
     cache: "no-cache",
   });
 

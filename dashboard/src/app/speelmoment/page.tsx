@@ -1,34 +1,16 @@
 import Link from "next/link";
 import { cookies } from "next/headers";
-
 import Navbar from "@/components/navbar";
 import Section from "@/components/section";
-import SubTile from "@/components/subtile";
 import Tile from "@/components/tile";
-import Chip from "@/components/chip";
-
-import {
-  FaChevronRight,
-  FaSteam,
-  FaLock,
-  FaTriangleExclamation,
-  FaWindows,
-  FaApple,
-  FaLinux,
-  FaThumbsDown,
-  FaThumbsUp,
-  FaPeopleGroup,
-  FaA,
-} from "react-icons/fa6";
+import { FaChevronRight } from "react-icons/fa6";
 import LoggedFrame from "@/components/loggedIn";
+import { API_URL } from "@/APIURL";
 async function getData() {
   const steamId = cookies().get("steamid")?.value;
-  const res = await fetch(
-    `http://localhost:8000/speelmomenten/?id=${steamId}`,
-    {
-      cache: "no-cache",
-    }
-  );
+  const res = await fetch(`${API_URL}/speelmomenten/?id=${steamId}`, {
+    cache: "no-cache",
+  });
   if (!res.ok) {
     // throw new Error("Fout bij het ophalen van de games");
     return [];
@@ -55,7 +37,7 @@ export default async function SpeelmomentenPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                 {speelmomenten.private?.deelnames?.map((m: any) => {
                   return (
-                    <Tile>
+                    <Tile key={m.sid}>
                       <div className="flex flex-row items-center">
                         <div className="flex-1">
                           <h1 className="text-donkerblauw font-bold">
@@ -94,7 +76,7 @@ export default async function SpeelmomentenPage() {
               )}
               {speelmomenten.private.uitnodigingen.map((m: any) => {
                 return (
-                  <Tile>
+                  <Tile key={m.sid}>
                     <div className="flex flex-row items-center">
                       <div className="flex-1">
                         <h1 className="text-donkerblauw font-bold">

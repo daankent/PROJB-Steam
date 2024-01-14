@@ -2,17 +2,14 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 
 import SubTile from "@/components/subtile";
-
+import { API_URL } from "@/APIURL";
 import { FaChevronRight } from "react-icons/fa6";
 import Tile from "../tile";
 async function getData() {
   const steamId = cookies().get("steamid")?.value;
-  const res = await fetch(
-    `http://localhost:8000/playerFriends/?id=${steamId}`,
-    {
-      next: { revalidate: 600 },
-    }
-  );
+  const res = await fetch(`${API_URL}/playerFriends/?id=${steamId}`, {
+    next: { revalidate: 600 },
+  });
   if (!res.ok) {
     // throw new Error("Fout bij het ophalen van de vrienden");
     return [];

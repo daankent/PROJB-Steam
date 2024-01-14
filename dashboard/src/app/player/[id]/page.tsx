@@ -4,7 +4,6 @@ import { cookies } from "next/headers";
 import Navbar from "@/components/navbar";
 import Section from "@/components/section";
 import SubTile from "@/components/subtile";
-import Tile from "@/components/tile";
 import formatPlaytime from "@/functions/formatPlaytime";
 import {
   FaChevronRight,
@@ -12,15 +11,13 @@ import {
   FaLock,
   FaTriangleExclamation,
 } from "react-icons/fa6";
+import { API_URL } from "@/APIURL";
 import calculateAccountAge from "@/functions/calculateAccountAge";
 import LoggedFrame from "@/components/loggedIn";
 async function getData(id: any) {
-  const res = await fetch(
-    `http://localhost:8000/playerInfoExtended/?id=${id}`,
-    {
-      next: { revalidate: 600 },
-    }
-  );
+  const res = await fetch(`${API_URL}/playerInfoExtended/?id=${id}`, {
+    next: { revalidate: 600 },
+  });
   if (!res.ok) {
     // throw new Error("Fout bij het ophalen van de games");
     return [];
