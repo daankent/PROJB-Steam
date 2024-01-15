@@ -7,6 +7,7 @@ import FriendList from "@/components/home/friendList";
 import FriendGameList from "@/components/home/friendGameList";
 import LoggedFrame from "@/components/loggedIn";
 import GameList from "@/components/home/gameList";
+import SpeelmomentenList from "@/components/home/speelmomenten";
 export default function Home() {
   return (
     <div>
@@ -66,7 +67,7 @@ export default function Home() {
                         Speelmomenten
                       </h1>
                     </div>
-
+                    <SpeelmomentenList />
                     <div className="flex items-center hover:text-blauwgrijs flex-row justify-end italic">
                       <Link href="/speelmoment">
                         <h2 className="text-donkerzwartblauw font-bold hover:text-blauwgrijs">

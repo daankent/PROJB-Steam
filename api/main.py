@@ -11,6 +11,8 @@ import getAppInfoFromSteam
 import createSpeelmoment
 import createSpeelmomentUitnodiging as csu
 import getSpeelmomenten
+import getGenreStats
+import getPricePlaytimeStats
 app = FastAPI()
 origins = [
 
@@ -213,6 +215,15 @@ async def speelmomenten(id):
 @app.get("/speelmoment")
 async def speelmomenten(id):
     return getSpeelmomenten.getSingle(id)
+
+
+@app.get("/genrestats")
+async def genrestats():
+    return getGenreStats.getGenreStats()
+
+@app.get("/priceplaytimestats")
+async def priceplaytimestats():
+    return getPricePlaytimeStats.getPricePlaytimeStats()
 @app.get("/cache")
 def getCache():
     return cache
