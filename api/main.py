@@ -234,6 +234,10 @@ async def priceplaytimestats():
     return getPricePlaytimeStats.getPricePlaytimeStats()
 
 
+@app.get("/zoeken")
+async def genrestats(filter, zoekterm):
+    return zoek_algoritme.zoek_spel(filter,zoekterm)
+
 @app.get("/hardware/echo")
 async def hardwareecho(id, online):
     return f"Hallo {id}"
