@@ -14,6 +14,7 @@ import getSpeelmomenten
 import getGenreStats
 import getPricePlaytimeStats
 import zoek_algoritme
+
 app = FastAPI()
 origins = [
 
@@ -47,7 +48,7 @@ def playerInfo(ids):
 def playerInfoExtended(id):
     data = getPlayerInfo.getPlayerInfo([id])
     data[0]["level"] = getPlayerLevel.getPlayerLevel(id)
-    
+
     data[0]["lastPlayed"] = getPlayerLastPlayed.getPlayerLastPlayedGames(id)[0]
     games = getPlayerOwnedGames.getPlayerOwnedGames(id)
     data[0]["games"] = sortOwnedGames.desc(games["response"]["games"], "playtime_forever")
@@ -64,43 +65,43 @@ def playerInfoExtended(id):
         data = getAppInfoFromSteam.getAppInfoFromSteam(id)
         print(data)
         return {
-                "appid": id,
-                "name": data["name"],
-                "release_date": data["release_date"]["date"],
-                "categories": [cat["description"] for cat in data["categories"]],
-                
-                "platforms": [platform for platform in data["platforms"]],
-                "developer": data["developers"][0],
-                "prijs": data["price_overview"]["final_formatted"].strip("€") if "price_overview" in data else "0,-",
-                "genres": [genre["description"] for genre in data["genres"]],
-                "ratings": {
-                    "known": False
-                },
-                "owners": {
-                    "known": False
-                }
-                }
-    
-    categories = data['categories'].split(";")
-    platforms = data["platforms"].split( ";")
-    genres = data["genres"].split( ";")
-    return {
-                "appid": id,
-                "name": data["name"],
-                "release_date": data["release_date"],
-                "categories": categories,
-                "platforms": platforms,
-                "developer": data["developer"],
-                "prijs": data["price"],
-                "genres": genres,
-                "ratings": {"known": True, "negative":data["negative_ratings"],"positive": data["positive_ratings"]},
-                "owners": {
-                    "known": True,
-                    "min": data["owners"].split("-")[0],
-                    "max": data["owners"].split("-")[1],
-                    "minmax": data["owners"]
-                }
+            "appid": id,
+            "name": data["name"],
+            "release_date": data["release_date"]["date"],
+            "categories": [cat["description"] for cat in data["categories"]],
+
+            "platforms": [platform for platform in data["platforms"]],
+            "developer": data["developers"][0],
+            "prijs": data["price_overview"]["final_formatted"].strip("€") if "price_overview" in data else "0,-",
+            "genres": [genre["description"] for genre in data["genres"]],
+            "ratings": {
+                "known": False
+            },
+            "owners": {
+                "known": False
             }
+        }
+
+    categories = data['categories'].split(";")
+    platforms = data["platforms"].split(";")
+    genres = data["genres"].split(";")
+    return {
+        "appid": id,
+        "name": data["name"],
+        "release_date": data["release_date"],
+        "categories": categories,
+        "platforms": platforms,
+        "developer": data["developer"],
+        "prijs": data["price"],
+        "genres": genres,
+        "ratings": {"known": True, "negative": data["negative_ratings"], "positive": data["positive_ratings"]},
+        "owners": {
+            "known": True,
+            "min": data["owners"].split("-")[0],
+            "max": data["owners"].split("-")[1],
+            "minmax": data["owners"]
+        }
+    }
 
 
 @app.get("/playerOwnedGames/{sort}")
@@ -194,17 +195,21 @@ def platerFriendsOwnedGames(id, sort):
         cache[cache_key] = data
         return games
 
+
 @app.get("/createSpeelmoment")
-async def createspeelmoment(creator,datum,starttijd, eindtijd, game_name, game_id, creator_name):
-    return createSpeelmoment.create(creator, True,datum, starttijd, eindtijd, game_name, game_id, creator_name)
+async def createspeelmoment(creator, datum, starttijd, eindtijd, game_name, game_id, creator_name):
+    return createSpeelmoment.create(creator, True, datum, starttijd, eindtijd, game_name, game_id, creator_name)
+
 
 @app.get("/uitnodiging")
 async def createuitnodiging(speelmoment, player, player_name):
-    return csu.create(speelmoment,player,player_name)
+    return csu.create(speelmoment, player, player_name)
+
 
 @app.get("/uitnodiging-answer")
 async def answeruitnodiging(id, answer):
     return csu.answer(id, answer)
+
 
 @app.get("/speelmomenten")
 async def speelmomenten(id):
@@ -212,7 +217,8 @@ async def speelmomenten(id):
         "public": getSpeelmomenten.getPublicSpeelmomenten(),
         "private": getSpeelmomenten.getPlayerSpeelmomenten(id)
     }
-    
+
+
 @app.get("/speelmoment")
 async def speelmomenten(id):
     return getSpeelmomenten.getSingle(id)
@@ -222,13 +228,20 @@ async def speelmomenten(id):
 async def genrestats():
     return getGenreStats.getGenreStats()
 
+
 @app.get("/priceplaytimestats")
 async def priceplaytimestats():
     return getPricePlaytimeStats.getPricePlaytimeStats()
 
+
 @app.get("/zoeken")
 async def genrestats(filter, zoekterm):
     return zoek_algoritme.zoek_spel(filter,zoekterm)
+
+@app.get("/hardware/echo")
+async def hardwareecho(id, online):
+    return f"Hallo {id}"
+
 
 @app.get("/cache")
 def getCache():

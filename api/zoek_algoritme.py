@@ -33,5 +33,3 @@ def zoek_spel(zoek_filter, zoek_waarde, json_bestand='steam.json'):
 
     # Retourneer de lijst met gevonden spellen.
     return gevonden_spellen
-
-
