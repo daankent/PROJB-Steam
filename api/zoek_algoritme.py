@@ -18,6 +18,7 @@ def verkrijg_beschikbare_filters(json_bestand='steam.json'):
     return beschikbare_filters
 
 def zoek_spel(zoek_filter, zoek_waarde, json_bestand='steam.json'):
+    print("Zoeken", zoek_filter, zoek_waarde)
     # Deze functie zoekt naar spellen op basis van een opgegeven filter en waarde.
     with open(json_bestand, 'r') as f:
         gegevens = json.load(f)
@@ -33,29 +34,4 @@ def zoek_spel(zoek_filter, zoek_waarde, json_bestand='steam.json'):
     # Retourneer de lijst met gevonden spellen.
     return gevonden_spellen
 
-# Verkrijgt beschikbare filters en toont ze.
-beschikbare_filters = verkrijg_beschikbare_filters()
-print("Beschikbare filters:", beschikbare_filters)
 
-# Vraagt de gebruiker om een filter en waarde in te voeren voor het zoeken.
-zoek_filter_te_zoeken = input("Voer het filter in waarop je wilt zoeken: ")
-zoek_waarde_te_zoeken = input(f"Voer de waarde in van het filter '{zoek_filter_te_zoeken}' waarop je wilt zoeken: ")
-
-# Voert de zoekfunctie uit en toont de resultaten.
-gevonden_spellen = zoek_spel(zoek_filter_te_zoeken, zoek_waarde_te_zoeken)
-
-if not gevonden_spellen:
-    print(f"Geen spellen gevonden met '{zoek_waarde_te_zoeken}' in het filter '{zoek_filter_te_zoeken}'.")
-else:
-    print("Gevonden spellen:")
-    for spel in gevonden_spellen:
-        print(f"""
-        AppID: {spel['appid']}
-        Naam: {spel['name']}
-        Releasedatum: {spel['release_date']}
-        Ontwikkelaar: {spel['developer']}
-        Uitgever: {spel['publisher']}
-        Genres: {spel['genres']}
-        Prijs: {spel['price']}
-        ---------------------------
-        """)

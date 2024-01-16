@@ -13,6 +13,7 @@ import createSpeelmomentUitnodiging as csu
 import getSpeelmomenten
 import getGenreStats
 import getPricePlaytimeStats
+import zoek_algoritme
 app = FastAPI()
 origins = [
 
@@ -224,6 +225,11 @@ async def genrestats():
 @app.get("/priceplaytimestats")
 async def priceplaytimestats():
     return getPricePlaytimeStats.getPricePlaytimeStats()
+
+@app.get("/zoeken")
+async def genrestats(filter, zoekterm):
+    return zoek_algoritme.zoek_spel(filter,zoekterm)
+
 @app.get("/cache")
 def getCache():
     return cache
