@@ -235,7 +235,7 @@ async def priceplaytimestats():
 
 
 @app.get("/hardware/echo")
-async def hardwareecho(id):
+async def hardwareecho(id, online):
     return f"Hallo {id}"
 
 
