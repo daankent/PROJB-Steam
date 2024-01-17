@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { API_URL } from "@/APIURL";
 
 export default function LoginForm() {
   const [id, setId] = useState<any>("");
@@ -10,7 +11,7 @@ export default function LoginForm() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:3000/api/auth/login", {
+      const res = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         body: JSON.stringify({
           id,
