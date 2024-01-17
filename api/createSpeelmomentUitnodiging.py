@@ -6,7 +6,7 @@ def create(speelmoment, player, name):
             dbname="steamhub",
             user="postgres",
             password="olifant29",
-            host="localhost",
+            host="20.49.199.2",
             port=5432
         )
         
@@ -27,7 +27,7 @@ def answer(uitnodiging, answer):
             dbname="steamhub",
             user="postgres",
             password="olifant29",
-            host="localhost",
+            host="20.49.199.2",
             port=5432
         )
         cursor = connection.cursor()

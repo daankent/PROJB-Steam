@@ -1,6 +1,6 @@
 import requests
 player_id = "76561198819434745"
-playerinfo = requests.get(f'http://localhost:8000/playerInfoExtended?id={player_id}').json()
+playerinfo = requests.get(f'http://steamhub.online/playerInfoExtended?id={player_id}').json()
 
 friends_states = []
 for friend in playerinfo[0]["friends"]:

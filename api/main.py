@@ -18,7 +18,13 @@ import zoek_algoritme
 app = FastAPI()
 origins = [
 
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "https://steamhub.online",
+    "https://steamhub.nl",
+    "http://steamhub.online",
+    "http://steamhub.nl",
+    
+    
 
 ]
 
