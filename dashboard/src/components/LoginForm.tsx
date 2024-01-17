@@ -11,7 +11,7 @@ export default function LoginForm() {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${API_URL}/api/auth/login`, {
+      const res = await fetch(`http://steamhub.nl/api/auth/login`, {
         method: "POST",
         body: JSON.stringify({
           id,
