@@ -6,7 +6,7 @@ def create(creator, private, datum, starttijd, eindtijd, game_name, game_id, cre
             dbname="steamhub",
             user="postgres",
             password="olifant29",
-            host="localhost",
+            host="20.49.199.2",
             port=5432
         )
         
