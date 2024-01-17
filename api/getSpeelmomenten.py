@@ -19,7 +19,7 @@ def getPlayerSpeelmomenten(steamId):
             dbname="steamhub",
             user="postgres",
             password="olifant29",
-            host="localhost",
+            host="20.49.199.2",
             port=5432
         )
         
@@ -62,7 +62,7 @@ def getPublicSpeelmomenten():
             dbname="steamhub",
             user="postgres",
             password="olifant29",
-            host="localhost",
+            host="20.49.199.2",
             port=5432
         )
         
@@ -87,7 +87,7 @@ def getSingle(id):
             dbname="steamhub",
             user="postgres",
             password="olifant29",
-            host="localhost",
+            host="20.49.199.2",
             port=5432
         )
         
