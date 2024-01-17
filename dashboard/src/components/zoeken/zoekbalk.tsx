@@ -65,7 +65,7 @@ export default function ZoekBalk() {
         {resultaten.length > 0 ? (
           resultaten.map((r: any) => {
             return (
-              <Tile>
+              <Tile key={r.appid}>
                 <div className="flex flex-col ">
                   <img
                     className="rounded-xl   shadow-xl"
