@@ -2,7 +2,7 @@
 import { API_URL } from "@/APIURL";
 import { cookies } from "next/headers";
 async function getData(id: any) {
-  const res = await fetch(`${API_URL}/playerInfo/?ids=[${id}]`, {
+  const res = await fetch(`http://steamhub.nl/playerInfo/?ids=[${id}]`, {
     cache: "no-cache",
   });
 
