@@ -69,12 +69,12 @@ export default async function SpeelmomentenPage() {
               Uitnodigingen:
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              {speelmomenten.private.uitnodigingen.length <= 0 && (
+              {speelmomenten.private?.uitnodigingen?.length <= 0 && (
                 <h3 className="text-lichtgrijs  font-bold text-lg italic mb-2">
                   Je hebt momenteel geen uitnodigengen
                 </h3>
               )}
-              {speelmomenten.private.uitnodigingen.map((m: any) => {
+              {speelmomenten.private?.uitnodigingen?.map((m: any) => {
                 return (
                   <Tile key={m.sid}>
                     <div className="flex flex-row items-center">
