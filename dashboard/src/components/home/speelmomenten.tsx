@@ -9,7 +9,8 @@ async function getData() {
     next: { revalidate: 600 },
   });
   if (!res.ok) {
-    throw new Error("Fout bij het ophalen van de vrienden");
+    // throw new Error("Fout bij het ophalen van de vrienden");
+    console.log("vriendenophaal fout");
   }
   return res.json();
 }

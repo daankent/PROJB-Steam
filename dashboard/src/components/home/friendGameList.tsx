@@ -12,7 +12,8 @@ async function getData() {
     }
   );
   if (!res.ok) {
-    throw new Error("Fout bij het ophalen van de vrienden");
+    // throw new Error("Fout bij het ophalen van de vrienden");
+    console.log("vriendenophaalfout");
   }
   return res.json();
 }
