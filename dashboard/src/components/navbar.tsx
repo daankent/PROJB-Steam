@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cookies } from "next/headers";
 import NavbarMenu from "./navbarMenu";
-import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaMagnifyingGlass, FaChartLine } from "react-icons/fa6";
 export default function Navbar() {
   const id = cookies().get("steamid");
   let user = undefined;
@@ -23,6 +23,11 @@ export default function Navbar() {
           <Link href="/zoeken">
             <div className="text-lichtgrijs ml-4">
               <FaMagnifyingGlass />
+            </div>
+          </Link>
+          <Link href="/stats">
+            <div className="text-lichtgrijs ml-4">
+              <FaChartLine />
             </div>
           </Link>
         </div>
