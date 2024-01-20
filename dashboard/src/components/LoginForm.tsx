@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { API_URL } from "@/APIURL";
+import { WEB_URL } from "@/WEBURL";
 
 export default function LoginForm() {
   const [id, setId] = useState<any>("");
@@ -11,7 +12,7 @@ export default function LoginForm() {
     e.preventDefault();
 
     try {
-      const res = await fetch(`http://steamhub.nl/api/auth/login`, {
+      const res = await fetch(`${WEB_URL}/api/auth/login`, {
         method: "POST",
         body: JSON.stringify({
           id,
