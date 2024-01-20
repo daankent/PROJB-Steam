@@ -30,6 +30,17 @@ export default function Navbar() {
               <FaChartLine />
             </div>
           </Link>
+          <Link href="/games">
+            <div className="text-lichtgrijs ml-4 hidden md:block">Games</div>
+          </Link>
+          <Link href="/friends">
+            <div className="text-lichtgrijs ml-4 hidden md:block">Vrienden</div>
+          </Link>
+          <Link href="/speelmoment">
+            <div className="text-lichtgrijs ml-4 hidden md:block">
+              Speelmomenten
+            </div>
+          </Link>
         </div>
         {id && user && (
           <>

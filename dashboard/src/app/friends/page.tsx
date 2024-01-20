@@ -6,6 +6,7 @@ import Tile from "@/components/tile";
 import { FaChevronRight } from "react-icons/fa6";
 import LoggedFrame from "@/components/loggedIn";
 import { API_URL } from "@/APIURL";
+import stateConverter from "@/functions/stateConverter";
 async function getData() {
   const steamId = cookies().get("steamid")?.value;
   const res = await fetch(`${API_URL}/playerFriendsExtended/?id=${steamId}`, {
@@ -45,6 +46,7 @@ export default async function FriendsPage() {
                           {friend.personaname}
                         </h2>
                         <h3>Laatst gespeeld: {friend.lastPlayed.name}</h3>
+                        <h3>Status: {stateConverter(friend.personastate)}</h3>
                       </div>
 
                       <Link href={`/player/${friend.steamid}`}>
