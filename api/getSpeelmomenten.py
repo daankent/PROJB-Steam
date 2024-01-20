@@ -4,6 +4,7 @@ from fastapi import HTTPException
 import json
 import psycopg2
 import psycopg2.extras
+from DBURL import DB_URL
 
 
 def getPlayerSpeelmomenten(steamId):
@@ -19,7 +20,7 @@ def getPlayerSpeelmomenten(steamId):
             dbname="steamhub",
             user="postgres",
             password="olifant29",
-            host="20.49.199.2",
+            host=DB_URL,
             port=5432
         )
         
@@ -62,7 +63,7 @@ def getPublicSpeelmomenten():
             dbname="steamhub",
             user="postgres",
             password="olifant29",
-            host="20.49.199.2",
+            host=DB_URL,
             port=5432
         )
         
@@ -87,7 +88,7 @@ def getSingle(id):
             dbname="steamhub",
             user="postgres",
             password="olifant29",
-            host="20.49.199.2",
+            host=DB_URL,
             port=5432
         )
         

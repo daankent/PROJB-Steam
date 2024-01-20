@@ -1,12 +1,13 @@
 import psycopg2
 from fastapi import HTTPException
+from DBURL import DB_URL
 def create(creator, private, datum, starttijd, eindtijd, game_name, game_id, creator_name):
     try:
         connection = psycopg2.connect(
             dbname="steamhub",
             user="postgres",
             password="olifant29",
-            host="20.49.199.2",
+            host=DB_URL,
             port=5432
         )
         

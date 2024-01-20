@@ -1,12 +1,14 @@
 import psycopg2
 from fastapi import HTTPException
+from DBURL import DB_URL
+
 def create(speelmoment, player, name):
     try:
         connection = psycopg2.connect(
             dbname="steamhub",
             user="postgres",
             password="olifant29",
-            host="20.49.199.2",
+            host=DB_URL,
             port=5432
         )
         
@@ -27,7 +29,7 @@ def answer(uitnodiging, answer):
             dbname="steamhub",
             user="postgres",
             password="olifant29",
-            host="20.49.199.2",
+            host=DB_URL,
             port=5432
         )
         cursor = connection.cursor()
