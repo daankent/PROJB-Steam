@@ -87,7 +87,7 @@ def getSingle(id):
         connection = psycopg2.connect(
             dbname="steamhub",
             user="postgres",
-            password="Ditishetdatabasewachtwoord1!!",
+            password="Ditishetdatabasewachtwoord1!",
             host=DB_URL,
             port=5432
         )
