@@ -106,4 +106,3 @@ def getSingle(id):
         raise HTTPException(status_code=500, detail="Er ging iets fout bij het ophalen van de speelmomenten")
     
     
-print(getPublicSpeelmomenten())
