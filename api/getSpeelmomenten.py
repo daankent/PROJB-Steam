@@ -19,7 +19,7 @@ def getPlayerSpeelmomenten(steamId):
         connection = psycopg2.connect(
             dbname="steamhub",
             user="postgres",
-            password="Ditishetdatabasewachtwoord1!",
+            password="olifant29",
             host=DB_URL,
             port=5432
         )
@@ -62,7 +62,7 @@ def getPublicSpeelmomenten():
         connection = psycopg2.connect(
             dbname="steamhub",
             user="postgres",
-            password="Ditishetdatabasewachtwoord1!",
+            password="olifant29",
             host=DB_URL,
             port=5432
         )
@@ -87,7 +87,7 @@ def getSingle(id):
         connection = psycopg2.connect(
             dbname="steamhub",
             user="postgres",
-            password="Ditishetdatabasewachtwoord1!",
+            password="olifant29",
             host=DB_URL,
             port=5432
         )

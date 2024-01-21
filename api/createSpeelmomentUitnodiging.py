@@ -7,7 +7,7 @@ def create(speelmoment, player, name):
         connection = psycopg2.connect(
             dbname="steamhub",
             user="postgres",
-            password="Ditishetdatabasewachtwoord1!",
+            password="olifant29",
             host=DB_URL,
             port=5432
         )
@@ -28,7 +28,7 @@ def answer(uitnodiging, answer):
         connection = psycopg2.connect(
             dbname="steamhub",
             user="postgres",
-            password="Ditishetdatabasewachtwoord1!",
+            password="olifant29",
             host=DB_URL,
             port=5432
         )

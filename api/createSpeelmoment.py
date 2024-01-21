@@ -6,7 +6,7 @@ def create(creator, private, datum, starttijd, eindtijd, game_name, game_id, cre
         connection = psycopg2.connect(
             dbname="steamhub",
             user="postgres",
-            password="Ditishetdatabasewachtwoord1!",
+            password="olifant29",
             host=DB_URL,
             port=5432
         )
