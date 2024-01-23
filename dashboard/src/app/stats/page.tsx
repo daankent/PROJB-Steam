@@ -8,6 +8,7 @@ import LoggedFrame from "@/components/loggedIn";
 import { API_URL } from "@/APIURL";
 import GenreStats from "@/components/stats/genreStats";
 import PrijsSpeeltijdStats from "@/components/stats/prijsSpeeltijd";
+import DeveloperStats from "@/components/stats/developerStats";
 
 async function getGenreData() {
   const steamId = cookies().get("steamid")?.value;
@@ -32,6 +33,7 @@ async function getPrijsSPeeltijdData() {
   }
   return res.json();
 }
+
 export default async function StatsPage() {
   const genreData = await getGenreData();
   const genres = genreData;
@@ -44,7 +46,7 @@ export default async function StatsPage() {
         <Navbar />
         <Section>
           <h1 className="text-lichtgrijs  font-bold text-2xl italic mb-2">
-            Stats
+            Algemene Statistieken
           </h1>
           <div className="w-full grid grid-cols-10 gap-10">
             <div className="col-span-5">
@@ -64,13 +66,21 @@ export default async function StatsPage() {
                 <h2 className="text-lichtgrijs  font-bold text-xl italic mb-2">
                   Prijs vs Speeltijd:
                 </h2>
-                {/* <p className="italic text-lichtgrijs  mb-2">
+                <p className="italic text-lichtgrijs  mb-2">
                   Visualistatie van alle het aantal keer dat een genre voorkomt
                   in alle steam games.
-                </p> */}
+                </p>
                 <PrijsSpeeltijdStats data={prijsSpeeltijd} />
               </Tile>
             </div>
+          </div>
+        </Section>
+        <Section>
+          <h1 className="text-lichtgrijs  font-bold text-2xl italic mb-2">
+            Developer Statistieken
+          </h1>
+          <div className="w-full ">
+            <DeveloperStats />
           </div>
         </Section>
       </LoggedFrame>

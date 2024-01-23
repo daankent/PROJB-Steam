@@ -14,7 +14,7 @@ import getSpeelmomenten
 import getGenreStats
 import getPricePlaytimeStats
 import zoek_algoritme
-
+import statistiek_algoritme as sa
 app = FastAPI()
 origins = [
 
@@ -239,6 +239,19 @@ async def genrestats():
 async def priceplaytimestats():
     return getPricePlaytimeStats.getPricePlaytimeStats()
 
+@app.get("/devstats")
+async def devStats(dev):
+    kwal_var = sa.kwalitatieve_variabele(dev, "genres")
+    kwal = []
+    for i in  kwal_var.items():
+        kwal.append({"genre": i[0], "aantal": i[1]})
+    # sorteer de genres op basis van meeste aantal naar minste aantal
+    kwal_sorted = sortOwnedGames.desc(kwal, "aantal")
+    return {
+        "kwal": kwal_sorted,
+        "kwan": sa.kwantitatieve_variabele(dev, "price"),
+        "gd": sa.gradient_descent_for_developer(dev, 1000)
+    }
 
 @app.get("/zoeken")
 async def genrestats(filter, zoekterm):
