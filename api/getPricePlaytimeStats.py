@@ -13,7 +13,7 @@ def getPricePlaytimeStats():
         values = []
         for game in games:
           if  game["average_playtime"] > 10000 or   game["price"] > 100:
-            print("skip")
+            continue
           else:
              values.append({"x": game["average_playtime"], "y": game["price"]})
             

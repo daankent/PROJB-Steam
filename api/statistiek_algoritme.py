@@ -113,15 +113,15 @@ def gradient_descent_for_developer(developer, num_iterations, learning_rate=0.00
 
 
 
-# Vraagt gebruiker om input voor developer en filter
-developer_input = input('Vul gewenste developer of publisher in: ')
-filter_input = input('Vul gewenst filter in: ').lower()
+# # Vraagt gebruiker om input voor developer en filter
+# developer_input = input('Vul gewenste developer of publisher in: ')
+# filter_input = input('Vul gewenst filter in: ').lower()
 
-# Roept de functie aan met de opgegeven input en print de resultaten
-print(kwantitatieve_variabele(developer_input, filter_input))
-print(kwalitatieve_variabele(developer_input, key='genres'))
+# # Roept de functie aan met de opgegeven input en print de resultaten
+# print(kwantitatieve_variabele(developer_input, filter_input))
+# print(kwalitatieve_variabele(developer_input, key='genres'))
 
-# Geeft de data weer uit het gradient_descent algoritme en kies tbenodigd aantal iterations
-iterations = 1000
-developer_result = gradient_descent_for_developer(developer_input, iterations)
-print(f"Na {iterations} keer doorlopen, a = {developer_result[0]} en b = {developer_result[1]}")
+# # Geeft de data weer uit het gradient_descent algoritme en kies tbenodigd aantal iterations
+# iterations = 1000
+# developer_result = gradient_descent_for_developer(developer_input, iterations)
+# print(f"Na {iterations} keer doorlopen, a = {developer_result[0]} en b = {developer_result[1]}")
