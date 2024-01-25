@@ -1,25 +1,24 @@
 import requests
-import constants
 from fastapi import HTTPException
-import json
 
 
 def getAppInfoFromSteam(appid):
     """
-        Functie om het level van een speler op te halen
+        Functie om game informatie op te halen bij de server van steam
         Args:
-            steamId:   steamId van de gebruiker waarvan je het level wil ophalen
+            appid:   appid van de game waar informatie voor moet worden opgevraagd
         Returns:
-                level - level van de speler
+                gameinfo - info van de opgevraagde game
     """
     try:
+        # Verzoek doen aan de steam server
         appData = requests.get(
             f"https://store.steampowered.com/api/appdetails?appids={appid}").json()
         
+        # het antwoord returnen
         return appData[str(appid)]["data"]
     except:
+        # error bericht weergeven
         print("Error")
         raise HTTPException(status_code=500, detail="Er ging iets fout bij het ophalen van de app informatie")
 
-
-getAppInfoFromSteam(4000)

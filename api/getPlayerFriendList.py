@@ -1,6 +1,5 @@
 import requests
 import constants
-from fastapi import HTTPException
 import getPlayerInfo
 
 

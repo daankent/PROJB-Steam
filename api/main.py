@@ -15,7 +15,11 @@ import getGenreStats
 import getPricePlaytimeStats
 import zoek_algoritme
 import statistiek_algoritme as sa
+
+# de fastapi initialiseren
 app = FastAPI()
+
+# CORS configureren
 origins = [
 
     "http://localhost:3000",
@@ -36,20 +40,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# het cache object aanmaken
 cache = {}
 
 
+# Test endpoint
 @app.get("/")
 def get_slash():
     return "Hello world"
 
-
+#  Endpoint om info over een speler op te vragen
 @app.get("/playerInfo/")
 def playerInfo(ids):
     data = getPlayerInfo.getPlayerInfo(ids)
     return data
 
-
+#  Endpoint om uitgebreide info over een speler op te vragen
 @app.get("/playerInfoExtended/")
 def playerInfoExtended(id):
     data = getPlayerInfo.getPlayerInfo([id])
@@ -62,7 +68,7 @@ def playerInfoExtended(id):
     data[0]["friends"] = friends
     return data
 
-
+#  Endpoint om info over een game op te vragen
 @app.get("/gameInfoExtended/")
 def playerInfoExtended(id):
     data = getGameFromJson.getGameFromJson(id)
@@ -109,7 +115,7 @@ def playerInfoExtended(id):
         }
     }
 
-
+#  Endpoint om lijst met games die een gebruiker bezit op te vragen
 @app.get("/playerOwnedGames/{sort}")
 def playerOwnedGames(id, sort):
     cache_key = f'playerOwnedGames-{sort}-{id}'
@@ -137,12 +143,13 @@ def playerOwnedGames(id, sort):
         return data["response"]["games"]
 
 
+#  Endpoint om vrienden van een speler op te vragen
 @app.get("/playerFriends/")
 def playerFriends(id):
     data = getPlayerFriendList.getPlayerFriendList(id)
     return data
 
-
+#  Endpoint om uitgebreide info over vrienden van een speler op te vragen
 @app.get("/playerFriendsExtended")
 def playerFriends(id):
     data = getPlayerFriendList.getPlayerFriendList(id)
@@ -157,19 +164,19 @@ def playerFriends(id):
             data[index]["lastPlayed"] = lastGame
     return data
 
-
+# Endpoint om de laatst gepspeelde games op te vragen van een steam gebruiker
 @app.get("/playerLastPlayedGames/")
 def playerLastPlayedGames(id):
     data = getPlayerLastPlayed.getPlayerLastPlayedGames(id)
     return data
 
-
+# Endpoint om de laatst gepspeelde game op te vragen van een steam gebruiker
 @app.get("/playerLastPlayedGame/")
 def playerLastPlayedGames(id):
     data = getPlayerLastPlayed.getPlayerLastPlayedGames(id)[0]
     return data
 
-
+# Endpoint om lijst met alle games van vrienden op te vragen van een bepaalde gebruiker
 @app.get("/playerFriendsOwnedGames/{sort}")
 def platerFriendsOwnedGames(id, sort):
     cache_key_sort = f'playerFriendsGames-{sort}-{id}'
@@ -201,22 +208,22 @@ def platerFriendsOwnedGames(id, sort):
         cache[cache_key] = data
         return games
 
-
+# Endpoint om een speelmoment aan te maken
 @app.get("/createSpeelmoment")
 async def createspeelmoment(creator, datum, starttijd, eindtijd, game_name, game_id, creator_name):
     return createSpeelmoment.create(creator, True, datum, starttijd, eindtijd, game_name, game_id, creator_name)
 
-
+# Endpoint om een uitnodiging aan te maken
 @app.get("/uitnodiging")
 async def createuitnodiging(speelmoment, player, player_name):
     return csu.create(speelmoment, player, player_name)
 
-
+# Endpoint om een uitnodiging te beantwoorden
 @app.get("/uitnodiging-answer")
 async def answeruitnodiging(id, answer):
     return csu.answer(id, answer)
 
-
+# Endpoint om alle speelmomenten van een speler op te vragen
 @app.get("/speelmomenten")
 async def speelmomenten(id):
     return {
@@ -224,21 +231,22 @@ async def speelmomenten(id):
         "private": getSpeelmomenten.getPlayerSpeelmomenten(id)
     }
 
-
+# Endpoint om een specifiek speelmoment op te vragen
 @app.get("/speelmoment")
 async def speelmomenten(id):
     return getSpeelmomenten.getSingle(id)
 
-
+# Endpoint om de genre statistieken op te vragen
 @app.get("/genrestats")
 async def genrestats():
     return getGenreStats.getGenreStats()
 
-
+# Endpoint om de prijs-speeltijd statistieken op te vragen
 @app.get("/priceplaytimestats")
 async def priceplaytimestats():
     return getPricePlaytimeStats.getPricePlaytimeStats()
 
+# Endpoint om de statistieken van een developer op te vragen
 @app.get("/devstats")
 async def devStats(dev):
     kwal_var = sa.kwalitatieve_variabele(dev, "genres")
@@ -253,15 +261,17 @@ async def devStats(dev):
         "gd": sa.gradient_descent_for_developer(dev, 1000)
     }
 
+# Endpoint voor het zoeken in het json bestand
 @app.get("/zoeken")
 async def genrestats(filter, zoekterm):
     return zoek_algoritme.zoek_spel(filter,zoekterm)
 
+# Endpoint om de hardware te testen
 @app.get("/hardware/echo")
 async def hardwareecho(id, online):
     return f"Hallo {id}"
 
-
+# Endpoint om te zien wat er allemaal in de cache zit
 @app.get("/cache")
 def getCache():
     return cache
