@@ -14,10 +14,8 @@ Steamhub is een dashboard voor al jouw steam gegevens. Je kun bijvoorbeeld je ga
 | Wassim Zenasni  |                 | BIM             |
 | Daan Kentrop    | 1850657         | 70% SD & 30% AI |
 
-
 ## Links
+
 [Steamhub](http://steamhub.nl)
 
 [Demo video](https://1drv.ms/v/s!AlYN8JohGVJ5ayaiN_QQoZO_VdI?e=z2uzsM)
-
-
