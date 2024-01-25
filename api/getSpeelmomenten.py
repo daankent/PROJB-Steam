@@ -35,23 +35,18 @@ def getPlayerSpeelmomenten(steamId):
         deelnames = []
         for i in res:
             d = dict(i)
-            print(d)
             if d["accepted"]:
-                print( 'a')
                 deelnames.append(d)
                 
             else: 
                 if d["answered"]:
-                    print("skip")
-                else:
-                    print( 'na')
-                
+                    continue
+                else:                
                     uitnodigingen.append(d)
                 
         
         return {"uitnodigingen": uitnodigingen, "deelnames": deelnames}
     except:
-        print("Error")
         raise HTTPException(status_code=500, detail="Er ging iets fout bij het ophalen van de speelmomenten")
 
 
@@ -77,7 +72,6 @@ def getPublicSpeelmomenten():
         res = dict_cursor.fetchall()
         return res
     except:
-        print("Error")
         raise HTTPException(status_code=500, detail="Er ging iets fout bij het ophalen van de speelmomenten")
     
 def getSingle(id):

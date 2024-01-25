@@ -19,6 +19,5 @@ def getAppInfoFromSteam(appid):
         return appData[str(appid)]["data"]
     except:
         # error bericht weergeven
-        print("Error")
         raise HTTPException(status_code=500, detail="Er ging iets fout bij het ophalen van de app informatie")
 

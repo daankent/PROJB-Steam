@@ -73,9 +73,7 @@ def playerInfoExtended(id):
 def playerInfoExtended(id):
     data = getGameFromJson.getGameFromJson(id)
     if data == -1:
-        print("Niet in Json")
         data = getAppInfoFromSteam.getAppInfoFromSteam(id)
-        print(data)
         return {
             "appid": id,
             "name": data["name"],
@@ -119,9 +117,7 @@ def playerInfoExtended(id):
 @app.get("/playerOwnedGames/{sort}")
 def playerOwnedGames(id, sort):
     cache_key = f'playerOwnedGames-{sort}-{id}'
-    print(cache_key)
     if cache_key in cache:
-        print("CACHEEEEEE")
         return cache[cache_key]
     else:
         data = getPlayerOwnedGames.getPlayerOwnedGames(id)

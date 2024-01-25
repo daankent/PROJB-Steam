@@ -33,7 +33,6 @@ def create(speelmoment, player, name):
         return id
     except:
         # Error bericht weergeven
-        print("Error")
         raise HTTPException(status_code=500, detail="Er ging iets fout bij het creëren van de uitnodiging")
 
 def answer(uitnodiging, answer):

@@ -17,8 +17,6 @@ def loadJsonData():
     return data
 
 
-# TODO: Eigen sorteerfuncties implementeren (alfabetisch, release datum, ratings, speeltijd, prijs, owners, required age)
-# TODO: Bepaalde symbolen negeren tijdens het sorteren
 def sortedGames(reversed=False):
     """Functie die de ingeladen games uit het json bestand sorteert op alfabetische volgorde van de naam. \n Als reverse == True dan worden de games teruggegeven in omgekeerd alfabetische volgorde."""
     # games inladen met de loadJsonData functie

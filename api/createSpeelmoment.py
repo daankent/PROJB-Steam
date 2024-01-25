@@ -40,7 +40,6 @@ def create(creator, private, datum, starttijd, eindtijd, game_name, game_id, cre
         return id
     except:
         # als er een error is dit aangeven met een bericht
-        print("Error")
         raise HTTPException(status_code=500, detail="Er ging iets fout bij het creëren van het speelmoment")
     
     
