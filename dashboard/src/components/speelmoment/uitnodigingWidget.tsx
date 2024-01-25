@@ -1,3 +1,4 @@
+// Component die het mogelijk maakt om een uitnodiging te beantwoorden
 "use client";
 import { useRouter } from "next/navigation";
 import Tile from "../tile";

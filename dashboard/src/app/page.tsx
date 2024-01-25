@@ -1,3 +1,4 @@
+// Dit is de homepage van steamhub
 import Link from "next/link";
 import Navbar from "@/components/navbar";
 import Section from "@/components/section";

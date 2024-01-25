@@ -1,3 +1,4 @@
+// Deze pagina laat de info van een specifieke game zien
 import Link from "next/link";
 import Navbar from "@/components/navbar";
 import Section from "@/components/section";

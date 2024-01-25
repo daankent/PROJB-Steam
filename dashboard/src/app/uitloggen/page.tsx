@@ -1,3 +1,4 @@
+// Via deze pagina kan de gebruiker uitloggen
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";

@@ -1,3 +1,4 @@
+// Page wrapper die checkt of iemand ingelogd is op de pagina's waar dat verplicht is
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 

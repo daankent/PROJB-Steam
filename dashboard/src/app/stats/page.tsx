@@ -1,3 +1,4 @@
+// Deze pagina laat diverse statistieken zien van steam
 import Link from "next/link";
 import { cookies } from "next/headers";
 import Navbar from "@/components/navbar";

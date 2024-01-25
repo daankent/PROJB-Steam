@@ -1,3 +1,4 @@
+// Component die het mogelijk maakt om vrienden uit te nodigen voor een speelmoment
 "use client";
 import { useRouter } from "next/navigation";
 import Tile from "../tile";

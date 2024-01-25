@@ -1,3 +1,4 @@
+// Op deze pagina kan een speelmoment aangemaakt worden
 import { cookies } from "next/headers";
 import Navbar from "@/components/navbar";
 import Section from "@/components/section";

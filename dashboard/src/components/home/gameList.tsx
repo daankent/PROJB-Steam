@@ -1,3 +1,5 @@
+// Een component die een korte lijst van games laat zien op de homepage
+
 import Link from "next/link";
 import { cookies } from "next/headers";
 import SubTile from "@/components/subtile";

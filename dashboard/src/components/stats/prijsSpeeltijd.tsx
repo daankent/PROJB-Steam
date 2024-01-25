@@ -1,3 +1,5 @@
+// Component die prijs-speeltijd statistieken laat zien
+
 "use client";
 import {
   Chart as ChartJS,

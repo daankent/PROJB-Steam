@@ -1,3 +1,4 @@
+// Deze pagina laat info over een specifieke gebruiker zien
 import Link from "next/link";
 import { cookies } from "next/headers";
 

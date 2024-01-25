@@ -1,3 +1,4 @@
+// Api endpoint om de gebruiker uit te loggen
 import { cookies } from "next/headers";
 
 async function handler(req: Request, { params }: any) {
@@ -5,7 +6,7 @@ async function handler(req: Request, { params }: any) {
     cookies().delete("steamid");
     cookies().delete("steamuser");
 
-    return Response.json("uitgeleogd", { status: 200 });
+    return Response.json("uitgelogd", { status: 200 });
   } else {
     return new Response("Post niet toegestaan", { status: 405 });
   }

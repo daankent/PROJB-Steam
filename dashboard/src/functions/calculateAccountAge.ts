@@ -1,3 +1,4 @@
+// Functie de de leeftijd van eens teamaccount calculeert
 export default function calculateAccountAge(sec: number) {
   const milli = sec * 1000;
   const accountCreationDate = new Date(milli);
