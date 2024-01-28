@@ -1,3 +1,4 @@
+// De navigatiebalk die bovenaan de pagina zichtbaar is
 import Link from "next/link";
 import { cookies } from "next/headers";
 import NavbarMenu from "./navbarMenu";

@@ -1,3 +1,4 @@
+// Een functie de de speeltijd in minuten omzet naar de best mogelijke tijdseenheid
 export default function formatPlaytime(minuten: number) {
   let formatted = "";
 

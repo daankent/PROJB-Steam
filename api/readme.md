@@ -1,13 +1,13 @@
 # API
 
-Een api voor de koppeling tussen de python code en de website gemaakte met html, css en javascript
+Een restapi die dient als koppeling tussen het steamhub dashboard en de verschillende databronnen (database, json file, steam web api en de hardware)
 
 ## Installatie
 
 Voer de commands hieronder uit om de benodigde module te installeren
 
 ```
-pip install fastapi
+pip install fastapi requests psycopg2
 pip install "uvicorn[standard]"
 ```
 

@@ -1,3 +1,4 @@
+// het menu dat zichtbaar is na het klikken op de profielfoto in de navigatiebalk
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

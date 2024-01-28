@@ -1,3 +1,4 @@
+// Deze pagina laat alle games zien de de gebruiker bezit
 import { cookies } from "next/headers";
 import Navbar from "@/components/navbar";
 import Section from "@/components/section";
@@ -15,6 +16,7 @@ async function getData(sort = "x") {
   if (!res.ok) {
     // throw new Error("Fout bij het ophalen van de games");
     return [];
+    1;
   }
   return res.json();
 }

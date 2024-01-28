@@ -1,3 +1,4 @@
+// Component die het mogelijk maakt om een speelmoment aan te maken
 "use client";
 import Link from "next/link";
 import { useState } from "react";

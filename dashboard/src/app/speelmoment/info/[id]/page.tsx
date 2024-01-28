@@ -1,3 +1,4 @@
+// Deze pagina geeft alle info van een specifiek speelmoment weer
 import { cookies } from "next/headers";
 import Navbar from "@/components/navbar";
 import Section from "@/components/section";

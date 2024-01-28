@@ -1,3 +1,5 @@
+// Dit bestand bevat de vrienden pagina
+// Hierop kan de gebruiker een lijst inzien met al zijn/haar vrienden
 import Link from "next/link";
 import { cookies } from "next/headers";
 import Navbar from "@/components/navbar";

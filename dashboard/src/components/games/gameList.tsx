@@ -1,3 +1,4 @@
+// Component om een lijst van games weer te geven en deze sorteerbaar te maken
 "use client";
 import Link from "next/link";
 import SubTile from "@/components/subtile";

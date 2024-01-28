@@ -1,3 +1,4 @@
+// Deze pagina bevat het formulier om in te loggen met de steamid
 import { redirect } from "next/navigation";
 import Navbar from "@/components/navbar";
 import Section from "@/components/section";

@@ -18,7 +18,6 @@ def verkrijg_beschikbare_filters(json_bestand='steam.json'):
     return beschikbare_filters
 
 def zoek_spel(zoek_filter, zoek_waarde, json_bestand='steam.json'):
-    print("Zoeken", zoek_filter, zoek_waarde)
     # Deze functie zoekt naar spellen op basis van een opgegeven filter en waarde.
     with open(json_bestand, 'r') as f:
         gegevens = json.load(f)

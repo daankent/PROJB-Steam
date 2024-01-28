@@ -1,3 +1,4 @@
+// Deze pagina laat alle speelmomenten van een gebruiker zien
 import Link from "next/link";
 import { cookies } from "next/headers";
 import Navbar from "@/components/navbar";

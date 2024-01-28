@@ -1,3 +1,4 @@
+// Component die de zoekbalk weergeeft
 "use client";
 
 import { useState } from "react";

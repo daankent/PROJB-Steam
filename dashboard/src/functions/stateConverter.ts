@@ -1,3 +1,4 @@
+// Functie die het status nummer omzet naar tekst
 export default function stateConverter(state: any) {
   switch (state) {
     case 0:

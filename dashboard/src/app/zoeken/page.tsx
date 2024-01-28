@@ -1,3 +1,4 @@
+// Via deze pagina kan er gezocht worden naar games
 import Link from "next/link";
 import { cookies } from "next/headers";
 import Navbar from "@/components/navbar";

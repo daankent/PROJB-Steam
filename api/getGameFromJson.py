@@ -7,9 +7,12 @@ def getGameFromJson(target):
 
     """
     id = int(target)
+    # json bestand openen
     with open("steam.json") as f:
+        # json inladen
         games = json.load(f)
 
+        # binairt search uitvoeren en de juiste waarde teruggeven
         left = 0
         right = len(games) - 1
         while left < right:
