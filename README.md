@@ -11,7 +11,7 @@ Steamhub is een dashboard voor al jouw steam gegevens. Je kun bijvoorbeeld je ga
 | Alesio Wiersma |   1854158              | CSC             |
 | Sem Smits       | 1784911         | 70% AI & 30% SD |
 | Kevin Habes     | 1862017                | TI              |
-| Wassim Zenasni  |            | BIM             |
+| Wassim Zenasni  | 1836034           | BIM             |
 | Daan Kentrop    | 1850657         | 70% SD & 30% AI |
 
 ## Links
