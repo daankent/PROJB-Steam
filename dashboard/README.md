@@ -16,3 +16,14 @@ Het dashboard bevat de volgende functie:
 
 De data die in het dashboard te zien is wordt opgehaald van onze eigen api. Deze api voegt onderandere data van de steamapi en het json bestand met games samen. En zorgt ervoor dat de data makkelijk bruikbaar is op het dashboard.
 
+## Gebruik
+
+Om steamhub op te starten gebruik je de volgende stappen:
+
+```
+npm install
+
+npm run build
+
+npm run start
+```
