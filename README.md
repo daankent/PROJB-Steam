@@ -19,3 +19,5 @@ Steamhub is een dashboard voor al jouw steam gegevens. Je kun bijvoorbeeld je ga
 [Steamhub](http://steamhub.nl)
 
 [Demo video](https://1drv.ms/v/s!AlYN8JohGVJ5ayaiN_QQoZO_VdI?e=z2uzsM)
+
+[Demo hardware](https://1drv.ms/v/s!AqCy1PVhiI0ajfgNJtXzTSox7FP-uA)
