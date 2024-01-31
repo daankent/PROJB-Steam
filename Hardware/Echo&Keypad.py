@@ -1,7 +1,12 @@
+import time
+
 from serial.tools import list_ports
 import serial
+import webbrowser
+import subprocess
 
-
+i = 0
+steam = r"C:\Program Files (x86)\Steam\Steam.exe"
 def read_serial(port):
     """Read data from serial port and return as string."""
     line = port.read(1000)
@@ -30,4 +35,14 @@ with serial.Serial(port=pico_port, baudrate=115200, bytesize=8, parity='N', stop
     while True:
         serial_port.flush()
         mes = serial_port.read_until().strip()
-        print(mes.decode())
+        if mes.decode() == "|" and i == 0:
+            subprocess.Popen([steam])
+            i += 1
+        if mes.decode() == "A":
+            webbrowser.open('http://steamhub.nl/', new=2, autoraise=True)
+        if mes.decode() == "B":
+            webbrowser.open('https://canvas.hu.nl/', new=2, autoraise=True)
+        if mes.decode() == "C":
+            webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', new=2, autoraise=True)
+        if mes.decode() == "D":
+            webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', new=2, autoraise=True)

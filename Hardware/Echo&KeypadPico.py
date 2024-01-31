@@ -4,6 +4,7 @@ import select
 import sys
 import time
 
+i = 0
 matrix = [
     ["1", "2", "3", "A"],
     ["4", "5", "6", "B"],
@@ -90,6 +91,7 @@ poll_obj.register(sys.stdin, select.POLLIN)
 while True:
     if printKey() is not None:
         sys.stdout.write(f'{printKey()}')
+        utime.sleep_ms(500)
     if ultra() != 0:
         sys.stdout.write('|'"\r")
     utime.sleep_ms(100)
