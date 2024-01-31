@@ -2,6 +2,9 @@
 
 Een restapi die dient als koppeling tussen het steamhub dashboard en de verschillende databronnen (database, json file, steam web api en de hardware)
 
+## Database
+![Database diagram](https://github.com/daankent/PROJB-Steam/blob/main/Database%20ERD.png?raw=true)
+
 ## Installatie
 
 Voer de commands hieronder uit om de benodigde module te installeren
